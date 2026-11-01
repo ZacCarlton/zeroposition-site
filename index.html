@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zero Position</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Independent exams of the evidence behind AI claims.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap">
+<style>
+/* Layout: one long reading column on bone paper; section labels sit in a left rail at wide widths, stack above at phone width. Single light look by choice (carried from the IMAGINE site). */
+:root{
+  --bone:#ECE8DD; --bone-light:#F5F2EA; --bone-deep:#DED8CC;
+  --charcoal:#121110; --divider:#4A4641; --muted:#6B665E;
+  --bronze:#8F764A; --bronze-ink:#735B36; --bronze-light:#C5AE83;
+  --serif:"Source Serif 4","Source Serif Pro",Georgia,"Times New Roman",serif;
+  --sans:"Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bone);color:var(--charcoal);font-family:var(--sans);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+.wrap{max-width:1180px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:700px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+a{color:var(--bronze-ink);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--charcoal)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+p{margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;text-wrap:balance}
+
+.draft{background:var(--charcoal);color:var(--bone-light);font-size:13px;letter-spacing:.04em}
+.draft .wrap{padding-block:8px}
+
+.top{border-bottom:1px solid var(--bone-deep)}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding-block:18px}
+.mark{font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal);text-decoration:none}
+.mark span{color:var(--bronze-ink);font-weight:400;letter-spacing:.08em;text-transform:none;margin-left:10px}
+.top nav{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:14px}
+.top nav a{color:var(--divider);text-decoration:none}
+.top nav a:hover{color:var(--charcoal);text-decoration:underline}
+
+.label{font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze-ink)}
+.stamp{display:inline-block;align-self:flex-start;justify-self:start;max-width:100%;font-size:11.5px;font-weight:700;line-height:1.35;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border:1px solid var(--charcoal);color:var(--charcoal)}
+.stamp.inf{border-style:dashed;border-color:var(--divider);color:var(--divider)}
+
+.hero .wrap{padding-block:clamp(48px,8vw,104px) clamp(40px,6vw,72px);display:grid;gap:22px;max-width:1180px}
+.hero h1{font-size:clamp(40px,6.4vw,84px);line-height:1.04;letter-spacing:-.01em;max-width:13em}
+.hero .aud{font-weight:700;font-size:clamp(18px,1.6vw,22px);line-height:1.45;max-width:34em}
+.hero .lede{font-family:var(--serif);font-size:clamp(19px,1.7vw,23px);line-height:1.55;max-width:36em;color:var(--charcoal)}
+.hero .me{max-width:38em;color:var(--divider)}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:6px}
+.mail code{font-family:var(--sans);font-size:17px;font-weight:700;background:var(--bone-light);border:1px solid var(--bone-deep);padding:10px 14px;user-select:all;overflow-wrap:anywhere}
+.copy{font:inherit;font-size:14px;font-weight:700;letter-spacing:.06em;min-height:44px;padding:0 18px;background:var(--charcoal);color:var(--bone-light);border:0;cursor:pointer}
+.copy:hover{background:var(--divider)}
+.mail .note{font-size:14px;color:var(--muted)}
+
+section.sec{border-top:1px solid var(--charcoal)}
+section.sec > .wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:18px 56px;padding-block:clamp(40px,6vw,76px)}
+@media (min-width:900px){section.sec > .wrap{grid-template-columns:minmax(0,3fr) minmax(0,9fr)}}
+.rail{display:grid;gap:8px;align-content:start}
+.body{display:grid;gap:22px;min-width:0;max-width:44em}
+.body h2{font-size:clamp(28px,3.4vw,44px);line-height:1.15}
+.body h3{font-size:22px;line-height:1.3}
+.body .read{font-family:var(--serif);font-size:19px;line-height:1.62}
+.body ul{margin:0;padding-left:1.1em;display:grid;gap:8px}
+.body li{padding-left:.2em}
+.muted{color:var(--muted);font-size:15px}
+
+.pair{display:grid;gap:22px}
+@media (min-width:760px){.pair{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.box{background:var(--bone-light);border:1px solid var(--bone-deep);padding:22px;display:grid;gap:10px;align-content:start;min-width:0}
+.box h3{font-size:20px}
+
+.fig{margin:0;display:grid;gap:10px}
+.fig svg{width:100%;height:auto;display:block}
+.fig .dg-tall{display:none}
+@media (max-width:700px){.fig .dg-wide{display:none}.fig .dg-tall{display:block;max-width:440px}}
+.dg-line{stroke:var(--charcoal);fill:none}
+.dg-rule{stroke:var(--bone-deep);fill:none}
+.dg-pass-s{stroke:var(--charcoal);fill:none}
+.dg-acc-s{stroke:var(--bronze-ink);fill:none}
+.dg-surf{fill:var(--bone-light)}
+.dg-ink{fill:var(--charcoal)} .dg-ink2{fill:var(--divider)} .dg-muted{fill:var(--muted)} .dg-pass{fill:var(--charcoal)} .dg-acc{fill:var(--bronze-ink)}
+.dg-t{font-family:var(--sans);font-size:14px;letter-spacing:.01em}
+.dg-tb{font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.14em}
+.dg-big{font-family:var(--sans);font-weight:300;font-size:50px;letter-spacing:.06em}
+
+.qs{counter-reset:q;display:grid;gap:0;border-top:1px solid var(--bone-deep)}
+.qs p{counter-increment:q;display:grid;grid-template-columns:3em minmax(0,1fr);gap:8px;padding-block:14px;border-bottom:1px solid var(--bone-deep);font-family:var(--serif);font-size:19px;line-height:1.5}
+.qs p::before{content:counter(q,decimal-leading-zero);font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--bronze-ink);padding-top:5px}
+
+.three{display:grid;gap:0;border-top:1px solid var(--bone-deep)}
+.three div{display:grid;gap:4px;padding-block:16px;border-bottom:1px solid var(--bone-deep)}
+.three strong{font-family:var(--serif);font-weight:500;font-size:20px}
+.three span{font-size:17px}
+
+.band{background:var(--charcoal);color:var(--bone-light)}
+.band .wrap{padding-block:clamp(36px,5vw,60px);display:grid;gap:14px;max-width:1180px}
+.band .stamp.inf{border-color:var(--bronze-light);color:var(--bronze-light)}
+.band p.big{font-family:var(--serif);font-size:clamp(22px,2.6vw,32px);line-height:1.35;max-width:30em}
+
+.corr{display:grid;gap:6px;background:var(--bone-light);border:1px solid var(--bone-deep);padding:20px}
+.corr s{color:var(--muted)}
+
+.who{display:grid;gap:16px}
+@media (min-width:760px){.who{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.who div{display:grid;gap:6px;border-top:1px solid var(--charcoal);padding-top:12px;min-width:0}
+.who strong{font-size:16px;letter-spacing:.02em}
+
+footer{border-top:1px solid var(--charcoal)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-block:28px;font-size:14px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">Zero Position<span>Dodge City, Kansas</span></a>
+    <nav aria-label="Sections">
+      <a href="#example">An example</a>
+      <a href="#exam">The examination</a>
+      <a href="#test">Our own test</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="label">Independent exams of the evidence behind AI claims</p>
+      <h1>The vendor says it works. Who checked?</h1>
+      <p class="aud">For insurers writing AI coverage, companies buying AI, and investors doing diligence.</p>
+      <p class="lede">When an AI vendor says its product is safe or accurate, we examine the evidence behind that one claim, as examiners who don't work for the vendor, and sign what it does and doesn't show. Today most buyers, insurers and investors have the vendor's own test reports to go on, and a report can look convincing while testing the wrong thing.</p>
+      <p class="me">I'm Zac Carlton. I build houses and commercial buildings in Kansas. For about a year I've been trying to run my company on AI agents, and I kept a record of where it broke. The failure that worried me most passed every check.</p>
+      <div class="mail">
+        <code id="addr">zac@imaginebuildco.com</code>
+        <button class="copy" id="copyBtn" type="button">Copy email</button>
+        <span class="note" id="copyNote" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec" id="example" aria-labelledby="ex-h">
+    <div class="wrap">
+      <div class="rail"><p class="label">An example</p><span class="stamp">Verified · my agent, my machine</span></div>
+      <div class="body">
+        <h2 id="ex-h">The list that told the inspector where to look</h2>
+        <p class="read">My agent added an action to a test copy of my system and left it out of the declared list. It then ran the completeness check. It came back PASS. The validator passed 14 of 14 cases. The preflight passed 17 of 17 checks. This was a test copy; the protected system was not changed.</p>
+        <p class="read">The action was there the whole time. The checks read the list to decide what to look for, and it wasn't on the list.</p>
+        <figure class="fig">
+          <svg class="dg-wide" viewBox="0 0 760 300" role="img" aria-labelledby="dgw-t dgw-d">
+            <title id="dgw-t">The list that told the inspector where to look</title>
+            <desc id="dgw-d">The completeness check reads the declared list and returns PASS. The action my agent added to the test copy is missing from that list, so this check does not cover it.</desc>
+            <rect class="dg-line dg-surf" x="10" y="24" width="290" height="196" stroke-width="1"/>
+            <text class="dg-tb dg-ink" x="26" y="50">THE LIST THE CHECK READS</text>
+            <line class="dg-rule" x1="10" y1="64" x2="300" y2="64" stroke-width="1"/>
+            <polyline class="dg-pass-s" points="28,80 33,85 42,75" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="86">Action on the list</text>
+            <line class="dg-rule" x1="10" y1="102" x2="300" y2="102" stroke-width="1"/>
+            <polyline class="dg-pass-s" points="28,114 33,119 42,109" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="120">Action on the list</text>
+            <line class="dg-rule" x1="10" y1="136" x2="300" y2="136" stroke-width="1"/>
+            <polyline class="dg-pass-s" points="28,148 33,153 42,143" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="154">Action on the list</text>
+            <line class="dg-rule" x1="10" y1="170" x2="300" y2="170" stroke-width="1"/>
+            <polyline class="dg-pass-s" points="28,182 33,187 42,177" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="188">Action on the list</text>
+            <line class="dg-line" x1="312" y1="122" x2="436" y2="122" stroke-width="1"/>
+            <polyline class="dg-line" points="428,115 438,122 428,129" stroke-width="1"/>
+            <text class="dg-t dg-muted" x="314" y="108">The check reads</text>
+            <text class="dg-t dg-muted" x="314" y="146">the list</text>
+            <rect class="dg-pass-s dg-surf" x="452" y="62" width="296" height="120" stroke-width="1.5"/>
+            <text class="dg-big dg-pass" x="600" y="130" text-anchor="middle">PASS</text>
+            <text class="dg-tb dg-pass" x="600" y="160" text-anchor="middle">14 OF 14 · 17 OF 17</text>
+            <rect class="dg-acc-s" x="10" y="236" width="470" height="58" stroke-width="1.5" stroke-dasharray="6 5"/>
+            <text class="dg-tb dg-acc" x="26" y="260">THE ACTION ADDED IN THE TEST</text>
+            <text class="dg-t dg-ink2" x="26" y="282">Not covered by this check. It wasn't on the list.</text>
+          </svg>
+          <svg class="dg-tall" viewBox="0 0 340 540" role="img" aria-labelledby="dgt-t dgt-d">
+            <title id="dgt-t">The list that told the inspector where to look</title>
+            <desc id="dgt-d">The completeness check reads the declared list and returns PASS. The action my agent added to the test copy is missing from that list, so this check does not cover it.</desc>
+            <rect class="dg-line dg-surf" x="10" y="20" width="320" height="200" stroke-width="1"/>
+            <text class="dg-tb dg-ink" x="26" y="48">THE LIST THE CHECK READS</text>
+            <line class="dg-rule" x1="10" y1="62" x2="330" y2="62" stroke-width="1"/>
+            <polyline class="dg-pass-s" points="28,82 33,87 42,77" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="88">Action on the list</text>
+            <line class="dg-rule" x1="10" y1="102" x2="330" y2="102" stroke-width="1"/>
+            <polyline class="dg-pass-s" points="28,122 33,127 42,117" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="128">Action on the list</text>
+            <line class="dg-rule" x1="10" y1="142" x2="330" y2="142" stroke-width="1"/>
+            <polyline class="dg-pass-s" points="28,162 33,167 42,157" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="168">Action on the list</text>
+            <line class="dg-rule" x1="10" y1="182" x2="330" y2="182" stroke-width="1"/>
+            <polyline class="dg-pass-s" points="28,200 33,205 42,195" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="206">Action on the list</text>
+            <line class="dg-line" x1="170" y1="228" x2="170" y2="284" stroke-width="1"/>
+            <polyline class="dg-line" points="163,276 170,286 177,276" stroke-width="1"/>
+            <text class="dg-t dg-muted" x="184" y="252">The check reads</text>
+            <text class="dg-t dg-muted" x="184" y="270">the list</text>
+            <rect class="dg-pass-s dg-surf" x="40" y="296" width="260" height="104" stroke-width="1.5"/>
+            <text class="dg-big dg-pass" x="170" y="354" text-anchor="middle">PASS</text>
+            <text class="dg-tb dg-pass" x="170" y="384" text-anchor="middle">14 OF 14 · 17 OF 17</text>
+            <rect class="dg-acc-s" x="10" y="428" width="320" height="96" stroke-width="1.5" stroke-dasharray="6 5"/>
+            <text class="dg-tb dg-acc" x="26" y="464">THE ACTION ADDED IN THE TEST</text>
+            <text class="dg-t dg-ink2" x="26" y="492">Not covered by this check.</text>
+            <text class="dg-t dg-ink2" x="26" y="512">It wasn't on the list.</text>
+          </svg>
+          <figcaption class="muted">Drawn from my agent's test on my machine. The rows stand in for the actions on the list.</figcaption>
+        </figure>
+        <span class="stamp inf">Inferred · what I take from this</span>
+        <p class="read">If the list defines the scope, nothing off the list gets checked, and a pass only tells you about the list.</p>
+        <div class="box">
+          <h3>What I don't claim</h3>
+          <p>I don't claim a stronger model fixes this, that my setup is typical, or that anyone else's product fails the same way. I want someone who didn't build it to check.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="exam" aria-labelledby="exam-h">
+    <div class="wrap">
+      <div class="rail"><p class="label">The examination</p></div>
+      <div class="body">
+        <h2 id="exam-h">What an examination checks, and what it doesn't</h2>
+        <p class="read">It's one examination, for anyone relying on a specific AI claim: an insurer pricing coverage, a company buying an AI product, or an investor in a deal. You name the claims your decision depends on. For each claim, the report gives two findings.</p>
+        <p class="read">First, what the vendor's evidence is: missing, shown to be flawed, not enough to judge, sound but short of the claim, or sound and reaching it. Second, whether sound evidence inside the claim's scope shows the claim is false. If none does, that isn't a pass.</p>
+        <div class="pair">
+          <div class="box">
+            <h3>What it doesn't do</h3>
+            <p>It doesn't test the product. It doesn't say whether the product works, is safe, is good, or will perform once it's deployed. There's no score, grade, tier or certification. It says nothing about claims you didn't name, beyond listing them. The examiner doesn't fix anything.</p>
+          </div>
+          <div class="box">
+            <h3>What it can't tell you</h3>
+            <ul>
+              <li>It can't confirm the records are real beyond checking them for consistency.</li>
+              <li>It can't confirm the version tested is the one you'd receive.</li>
+              <li>Zero problems found in a sample means zero found in that sample.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="box">
+          <h3>What you bring</h3>
+          <p>The claims you rely on, and the vendor's evidence for each, through you and under your NDA. The examiner needs no source code, running copy of the product, or credentials. If a check needs one of those, the report says unknown and names what it needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="test" aria-labelledby="test-h">
+    <div class="wrap">
+      <div class="rail"><p class="label">Our own test</p></div>
+      <div class="body">
+        <h2 id="test-h">We test our method first, in public</h2>
+        <p class="read">Before we sell an examination, we test the method blind. A red team builds eight made-up vendor cases, two clean and six with planted faults. A human inspector and an AI inspector work them apart. Then an outside examiner repeats the round without the key. Everything is released, pass or fail.</p>
+        <p class="read">I ask three questions of any check, starting with my own.</p>
+        <div class="three">
+          <div><strong>Who wrote the list?</strong><span>Not the vendor. Two lists, built apart. A red team plants problems in made-up evidence files, some outside both lists.</span></div>
+          <div><strong>Do I pay more for a pass?</strong><span>No. Every fee is set before the work starts, and a refusal pays the same.</span></div>
+          <div><strong>Who can overrule the result?</strong><span>Not me. A signer who wrote none of it applies the scoring rules. I can't overrule a refusal.</span></div>
+        </div>
+        <p class="read">Eight cases can't give a general error rate. They show whether the method catches what it's built to catch. More rounds come after that.</p>
+        <div class="box">
+          <h3>Where this stands</h3>
+          <p>The method is written. The seats for the blind test are being filled, and each person is named only after accepting in writing. The blind round is planned for March 2027, with everything released by July 31, 2027, if the work is funded in January. If funding comes later, the dates move.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="who-h">
+    <div class="wrap">
+      <div class="rail"><p class="label">Who examines</p></div>
+      <div class="body">
+        <h2 id="who-h">The examiner isn't me</h2>
+        <p class="read">I designed the method, and AI models drafted it. I'm not the examiner. The examiner signs the findings and has to have shown practice checking software or systems against stated criteria: for example, an FAA software designee, an independent verification and validation engineer, or a test and evaluation engineer.</p>
+        <p class="read">A second reviewer, independent of the examiner, reads every finding and either releases it or sends it back with the point in dispute. Both write down their ties to the vendor, to you and to the deal before the work starts. The vendor can answer written questions and can't edit a finding.</p>
+        <p class="read">None of this makes the examination a certification. It's a written finding on the vendor's evidence, and on what's still open, for the scope you named.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="mkt-h">
+    <div class="wrap">
+      <div class="rail"><p class="label">The market</p></div>
+      <div class="body">
+        <h2 id="mkt-h">What exists, and what doesn't</h2>
+        <p class="read">The market today offers deal diligence, certification of how a company manages AI (ISO/IEC 42001), checks the vendor pays for, and checks run by an insurer that also sells the coverage. I haven't found a published method, run by examiners who don't work for the vendor, that checks whether the evidence behind a specific AI claim holds up, tested blind, repeated by an outside examiner, with an error rate.</p>
+        <p class="read">In buildings, electrical products and aircraft software, the company being checked doesn't write the standard by itself or decide who's qualified to check against it. For AI, standards are starting to form. The rest mostly isn't there yet.</p>
+        <p class="read">On October 14, Kansas sued OpenAI under its Consumer Protection Act, alleging its safety claims had no reasonable basis when they were made. Seven other states filed the same day. No court has ruled.</p>
+        <p class="muted">News coverage: <a href="https://www.kctv5.com/2026/10/14/kansas-ag-kris-kobach-announces-lawsuit-against-openai/">KCTV5, October 14, 2026</a>; <a href="https://www.hppr.org/hppr-news/2026-10-16/kansas-attorney-general-and-others-move-to-sue-openai-in-state-courts">HPPR, October 16, 2026</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="ask-h">
+    <div class="wrap">
+      <div class="rail"><p class="label">Before you rely on it</p></div>
+      <div class="body">
+        <h2 id="ask-h">Before you rely on a vendor's report, ask who checked it</h2>
+        <p class="read">If you're shown test results for an AI product you're about to insure, buy or fund, ask where they came from. These are the questions I'd ask first.</p>
+        <div class="qs">
+          <p>Who ran the tests, and did the company pay them?</p>
+          <p>Where did the list of things to test come from? If it came from the product, what isn't on it?</p>
+          <p>Are results on bad or unusual inputs reported apart from results on normal ones?</p>
+          <p>Who paid for the evaluation, and does the report say so?</p>
+          <p>If you run the same input again, do you get the same answer?</p>
+          <p>Can you read the full report, or only a summary and a badge?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap">
+      <span class="stamp inf">Inferred · my comparison as a contractor</span>
+      <p class="big">I can't hand a family the keys until an inspector who doesn't work for me signs off. Who does that before you rely on an AI product?</p>
+    </div>
+  </div>
+
+  <section class="sec" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="rail"><p class="label">How I work</p></div>
+      <div class="body">
+        <h2 id="how-h">If I ask who checked your work, I owe you the same answer about mine</h2>
+        <div class="three">
+          <div><strong>Outside readers</strong><span>I pay engineers who check aircraft and spacecraft software for a living to read my work and tell me where it's weakest. None of them endorsed anything.</span></div>
+          <div><strong>Mistakes</strong><span>I keep a log of the mistakes my AI agents make working for me, and what caught each one: 532 entries since September, at least 59 of them caught by me.</span></div>
+          <div><strong>Labels</strong><span>Verified means I saw it in a record or a source I can point to. Inferred means it's my inference, and I say so.</span></div>
+          <div><strong>Publishing</strong><span>Everything from the blind test is released, pass or fail. I won't publish a verdict on any named party.</span></div>
+        </div>
+        <div class="corr">
+          <p class="label">What I've taken back</p>
+          <p><s>A check that defines its own list will always report itself complete.</s></p>
+          <p>Wrong. It can fail its own checks for other reasons. What holds is narrower: a pass only tells you about the list.</p>
+          <p class="muted">Taken back September 19, 2026. If you find something wrong on this page, tell me. I'll fix it here and say what changed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="contact" aria-labelledby="ct-h">
+    <div class="wrap">
+      <div class="rail"><p class="label">Contact</p></div>
+      <div class="body">
+        <h2 id="ct-h">Who I want to hear from</h2>
+        <div class="who">
+          <div><strong>Insurers writing AI coverage</strong><span>If you're pricing a policy on an AI product, tell me what the vendor showed you.</span></div>
+          <div><strong>Companies buying AI</strong><span>If a vendor's claim is part of your decision, send me the claim and the evidence behind it.</span></div>
+          <div><strong>Investors in an AI deal</strong><span>Send me the test results you were shown. I'll look for what they leave out.</span></div>
+          <div><strong>People who check things for a living</strong><span>Independent verification and validation, aircraft software, test and evaluation. I'll pay for your time to read one document and tell me where it's weakest.</span></div>
+        </div>
+        <div class="box">
+          <h3>About</h3>
+          <p>I'm a residential developer, builder and designer, and a multifamily and commercial contractor, with more than 200 completed projects. I hold a Class A general contractor license. I've worked on Zero Position since August 2026, out of trying to run my own company on AI.</p>
+          <p class="muted">Zac Carlton · Founder, Zero Position · Dodge City, Kansas · zac@imaginebuildco.com · linkedin.com/in/zaccarlton</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Zero Position Holdings, LLC. Results on this page come from my own systems unless a source is linked.</span>
+    <span>Updated November 1, 2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('copyBtn'), note=document.getElementById('copyNote'), addr=document.getElementById('addr');
+  function selectAddr(){var r=document.createRange();r.selectNodeContents(addr);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}
+  btn.addEventListener('click',function(){
+    var text=addr.textContent.trim();
+    try{
+      navigator.clipboard.writeText(text).then(function(){note.textContent='Copied.';},function(){selectAddr();note.textContent='Selected. Copy it from here.';});
+    }catch(e){selectAddr();note.textContent='Selected. Copy it from here.';}
+  });
+})();
+</script>
+</body>
+</html>
