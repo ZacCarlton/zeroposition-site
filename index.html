@@ -42,369 +42,746 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Public+Sans:wght@400;500;600;700;800&amp;display=swap">
 <style>
-/* Layout: one long reading column on bone paper; section labels sit in a left rail at wide widths, stack above at phone width. Single light look by choice (carried from the IMAGINE site). */
-:root{
-  --bone:#ECE8DD; --bone-light:#F5F2EA; --bone-deep:#DED8CC;
-  --charcoal:#121110; --divider:#4A4641; --muted:#6B665E;
-  --bronze:#8F764A; --bronze-ink:#735B36; --bronze-light:#C5AE83;
-  --serif:"Source Serif 4","Source Serif Pro",Georgia,"Times New Roman",serif;
-  --sans:"Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-  color-scheme:light;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bone);color:var(--charcoal);font-family:var(--sans);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
-.wrap{max-width:1180px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-@media (min-width:700px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
-a{color:var(--bronze-ink);text-decoration-thickness:1px;text-underline-offset:3px}
-a:hover{color:var(--charcoal)}
-a:focus-visible,button:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
-p{margin:0}
-h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;text-wrap:balance}
-
-.draft{background:var(--charcoal);color:var(--bone-light);font-size:13px;letter-spacing:.04em}
-.draft .wrap{padding-block:8px}
-
-.top{border-bottom:1px solid var(--bone-deep)}
-.top .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding-block:18px}
-.mark{font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal);text-decoration:none}
-.mark span{color:var(--bronze-ink);font-weight:400;letter-spacing:.08em;text-transform:none;margin-left:10px}
-.top nav{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:14px}
-.top nav a{color:var(--divider);text-decoration:none}
-.top nav a:hover{color:var(--charcoal);text-decoration:underline}
-
-.label{font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze-ink)}
-.stamp{display:inline-block;align-self:flex-start;justify-self:start;max-width:100%;font-size:11.5px;font-weight:700;line-height:1.35;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border:1px solid var(--charcoal);color:var(--charcoal)}
-.stamp.inf{border-style:dashed;border-color:var(--divider);color:var(--divider)}
-
-.hero .wrap{padding-block:clamp(48px,8vw,104px) clamp(40px,6vw,72px);display:grid;gap:22px;max-width:1180px}
-.hero h1{font-size:clamp(40px,6.4vw,84px);line-height:1.04;letter-spacing:-.01em;max-width:13em}
-.hero .aud{font-weight:700;font-size:clamp(18px,1.6vw,22px);line-height:1.45;max-width:34em}
-.hero .lede{font-family:var(--serif);font-size:clamp(19px,1.7vw,23px);line-height:1.55;max-width:36em;color:var(--charcoal)}
-.hero .me{max-width:38em;color:var(--divider)}
-.mail{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:6px}
-.mail code{font-family:var(--sans);font-size:17px;font-weight:700;background:var(--bone-light);border:1px solid var(--bone-deep);padding:10px 14px;user-select:all;overflow-wrap:anywhere}
-.copy{font:inherit;font-size:14px;font-weight:700;letter-spacing:.06em;min-height:44px;padding:0 18px;background:var(--charcoal);color:var(--bone-light);border:0;cursor:pointer}
-.copy:hover{background:var(--divider)}
-.mail .note{font-size:14px;color:var(--muted)}
-
-section.sec{border-top:1px solid var(--charcoal)}
-section.sec > .wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:18px 56px;padding-block:clamp(40px,6vw,76px)}
-@media (min-width:900px){section.sec > .wrap{grid-template-columns:minmax(0,3fr) minmax(0,9fr)}}
-.rail{display:grid;gap:8px;align-content:start}
-.body{display:grid;gap:22px;min-width:0;max-width:44em}
-.body h2{font-size:clamp(28px,3.4vw,44px);line-height:1.15}
-.body h3{font-size:22px;line-height:1.3}
-.body .read{font-family:var(--serif);font-size:19px;line-height:1.62}
-.body ul{margin:0;padding-left:1.1em;display:grid;gap:8px}
-.body li{padding-left:.2em}
-.muted{color:var(--muted);font-size:15px}
-
-.pair{display:grid;gap:22px}
-@media (min-width:760px){.pair{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
-.box{background:var(--bone-light);border:1px solid var(--bone-deep);padding:22px;display:grid;gap:10px;align-content:start;min-width:0}
-.box h3{font-size:20px}
-
-.fig{margin:0;display:grid;gap:10px}
-.fig svg{width:100%;height:auto;display:block}
-.fig .dg-tall{display:none}
-@media (max-width:700px){.fig .dg-wide{display:none}.fig .dg-tall{display:block;max-width:440px}}
-.dg-line{stroke:var(--charcoal);fill:none}
-.dg-rule{stroke:var(--bone-deep);fill:none}
-.dg-pass-s{stroke:var(--charcoal);fill:none}
-.dg-acc-s{stroke:var(--bronze-ink);fill:none}
-.dg-surf{fill:var(--bone-light)}
-.dg-ink{fill:var(--charcoal)} .dg-ink2{fill:var(--divider)} .dg-muted{fill:var(--muted)} .dg-pass{fill:var(--charcoal)} .dg-acc{fill:var(--bronze-ink)}
-.dg-t{font-family:var(--sans);font-size:14px;letter-spacing:.01em}
-.dg-tb{font-family:var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.14em}
-.dg-big{font-family:var(--sans);font-weight:300;font-size:50px;letter-spacing:.06em}
-
-.qs{counter-reset:q;display:grid;gap:0;border-top:1px solid var(--bone-deep)}
-.qs p{counter-increment:q;display:grid;grid-template-columns:3em minmax(0,1fr);gap:8px;padding-block:14px;border-bottom:1px solid var(--bone-deep);font-family:var(--serif);font-size:19px;line-height:1.5}
-.qs p::before{content:counter(q,decimal-leading-zero);font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--bronze-ink);padding-top:5px}
-
-.three{display:grid;gap:0;border-top:1px solid var(--bone-deep)}
-.three div{display:grid;gap:4px;padding-block:16px;border-bottom:1px solid var(--bone-deep)}
-.three strong{font-family:var(--serif);font-weight:500;font-size:20px}
-.three span{font-size:17px}
-
-.band{background:var(--charcoal);color:var(--bone-light)}
-.band .wrap{padding-block:clamp(36px,5vw,60px);display:grid;gap:14px;max-width:1180px}
-.band .stamp.inf{border-color:var(--bronze-light);color:var(--bronze-light)}
-.band p.big{font-family:var(--serif);font-size:clamp(22px,2.6vw,32px);line-height:1.35;max-width:30em}
-
-.corr{display:grid;gap:6px;background:var(--bone-light);border:1px solid var(--bone-deep);padding:20px}
-.corr s{color:var(--muted)}
-
-.who{display:grid;gap:16px}
-@media (min-width:760px){.who{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.who div{display:grid;gap:6px;border-top:1px solid var(--charcoal);padding-top:12px;min-width:0}
-.who strong{font-size:16px;letter-spacing:.02em}
-
-footer{border-top:1px solid var(--charcoal)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-block:28px;font-size:14px;color:var(--muted)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+body{margin:0;font-family:'Public Sans','Helvetica Neue',Arial,sans-serif;color:#12161C;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+a{color:#1B3B6F;text-underline-offset:3px}
+a:hover{color:#0E1F3B;text-decoration-thickness:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #1B3B6F;outline-offset:3px}
+[hidden]{display:none!important}
+summary{list-style:none}
+summary::-webkit-details-marker{display:none}
+.mono{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace}
+.eyebrow{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:13px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#1B3B6F}
+.h2{margin:0;font-size:clamp(30px,3vw,42px);line-height:1.15;font-weight:700;letter-spacing:-0.015em;color:#12161C;text-wrap:balance}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;border:0;background:#1B3B6F;color:#FFFFFF;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer}
+.btn-primary:hover{background:#0E1F3B}
+.btn-secondary{display:inline-flex;align-items:center;min-height:52px;padding:0 20px;border:1px solid #8D98A6;background:#FFFFFF;color:#12161C;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer}
+.btn-secondary:hover{border-color:#12161C}
+.stamp{display:inline-flex;align-self:flex-start;margin-top:8px;font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;font-weight:600;line-height:1.3;letter-spacing:0.08em;text-transform:uppercase;padding:5px 10px;border:1px solid #12161C;color:#12161C}
+.stamp-inf{margin-top:0;border:1px dashed #56606C;color:#3B4450}
+.panel{box-sizing:border-box;background:#FFFFFF;border:1px solid #D3D9E0}
+.demo-grid{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:8px;align-items:center}
+.demo-head{padding-bottom:6px;font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#56606C}
+.demo-item{box-sizing:border-box;border:1px solid #D3D9E0;background:#F8F9FB;padding:9px 12px;font-size:15px;line-height:1.35;color:#12161C}
+.demo-off{border:1.5px solid #9C4600;background:#FBEEE2;font-weight:600;color:#7A3600}
+.demo-arrow path{fill:none;stroke:#8D98A6;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.demo-status{display:flex;align-items:center;min-height:40px}
+.st-wait{font-size:15px;line-height:1.35;color:#56606C}
+.st-active{display:inline-flex;align-items:center;padding:4px 10px;background:#E3E8EE;font-size:15px;line-height:1.35;font-weight:600;color:#12161C}
+.st-done{display:flex;align-items:center;gap:8px;font-size:15px;line-height:1.35;font-weight:600;color:#1B3B6F}
+.mono-label{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
+.lv{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:72px;box-sizing:border-box;padding:10px 12px;border:1px solid #D3D9E0;background:#F8F9FB;color:#12161C;font-family:inherit;text-align:left;cursor:pointer}
+.lv:hover{border-color:#1B3B6F}
+.lv-num{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;font-weight:600;color:#1B3B6F}
+.lv-label{font-size:14px;line-height:1.3;font-weight:600}
+.lv[aria-pressed="true"]{border:2px solid #1B3B6F;background:#1B3B6F;color:#FFFFFF}
+.lv[aria-pressed="true"] .lv-num{color:#FFFFFF}
+.dots i{display:block;aspect-ratio:1;border-radius:50%;background:#3A5078}
+.dots i.fp{background:#F08A3C;box-shadow:0 0 0 3px rgba(240,138,60,0.35)}
+.dots[data-second="true"] i.fp{background:#FFFFFF;box-shadow:0 0 0 3px #7FB0FF}
+.frow-btn,.fdetail{background:#FFFFFF}
+.frow-btn:hover{background:#F8F9FB}
+.frow-btn[aria-expanded="true"],.frow-btn[aria-expanded="true"]+.fdetail{background:#F8F9FB}
+.frow[data-ai="true"] .frow-btn,.frow[data-ai="true"] .fdetail{background:#FFF6EE}
+.fsign{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:16px;color:#1B3B6F;width:10px}
+.fsign::before{content:"+"}
+.frow-btn[aria-expanded="true"] .fsign::before{content:"\2212"}
+@media (max-width:600px){.dots{gap:2px!important;padding:10px!important}}
 </style>
 </head>
 <body>
+<div style="font-family: 'Public Sans', 'Helvetica Neue', Arial, sans-serif; color: #12161C; background: #FFFFFF; min-width: 0">
 
+<div style="background: #0E1F3B">
+<div style="max-width: 1264px; margin: 0 auto; padding: 10px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 24px; font-size: 13px; line-height: 1.5; color: #D5DEEA">
+<span>Examiners who don't work for the vendor</span>
+<span>Method published · Blind test released pass or fail</span>
+</div>
+</div>
 
-<header class="top">
-  <div class="wrap">
-    <a class="mark" href="#top">Zero Position</a>
-    <nav aria-label="Sections">
-      <a href="#example">An example</a>
-      <a href="#exam">The examination</a>
-      <a href="#test">Our own test</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
+<header style="background: #FFFFFF; border-bottom: 1px solid #D3D9E0">
+<div style="max-width: 1264px; margin: 0 auto; padding: 18px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px">
+<a href="#top" style="display: flex; align-items: center; gap: 14px; color: #12161C; text-decoration: none">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 20px; line-height: 1.1; font-weight: 800; letter-spacing: 0.01em">Zero Position</span><span style="font-size: 12px; line-height: 1.3; font-weight: 500; letter-spacing: 0.04em; color: #56606C">Examination of AI claims</span></span>
+</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; font-size: 15px; font-weight: 500">
+<a href="#examination" style="display: inline-flex; align-items: center; min-height: 44px; color: #12161C; text-decoration: none">The Examination</a>
+<a href="#method" style="display: inline-flex; align-items: center; min-height: 44px; color: #12161C; text-decoration: none">Method and Blind Test</a>
+<a href="#industries" style="display: inline-flex; align-items: center; min-height: 44px; color: #12161C; text-decoration: none">How Mature Industries Do It</a>
+<a href="#evidence" style="display: inline-flex; align-items: center; min-height: 44px; color: #12161C; text-decoration: none">Evidence</a>
+<a href="#people" style="display: inline-flex; align-items: center; min-height: 44px; color: #12161C; text-decoration: none">People</a>
+<a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; background: #1B3B6F; color: #FFFFFF; font-weight: 600; text-decoration: none">Contact</a>
+</nav>
+</div>
 </header>
 
-<main id="top">
-  <div class="hero">
-    <div class="wrap">
-      <p class="label">Independent exams of the evidence behind AI claims</p>
-      <h1>The vendor says it works. Who checked?</h1>
-      <p class="aud">For insurers writing AI coverage, companies buying AI, and investors doing diligence.</p>
-      <p class="lede">When an AI vendor says its product is safe or accurate, we examine the evidence behind that one claim, as examiners who don't work for the vendor, and sign what it does and doesn't show. Today most buyers, insurers and investors have the vendor's own test reports to go on, and a report can look convincing while testing the wrong thing.</p>
-      <p class="me">I'm Zac Carlton. I build houses and commercial buildings in Kansas. For about a year I've been trying to run my company on AI agents, and I kept a record of where it broke. The failure that worried me most passed every check.</p>
-      <div class="mail">
-        <code id="addr">zac@zeropositionexam.com</code>
-        <button class="copy" id="copyBtn" type="button">Copy email</button>
-        <span class="note" id="copyNote" aria-live="polite"></span>
-      </div>
-    </div>
-  </div>
+<section id="top" style="background: #FFFFFF">
+<div style="max-width: 1264px; margin: 0 auto; padding: 80px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px 64px">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">Independent examination of the evidence behind AI claims</div>
+<h1 style="margin: 0; font-size: clamp(44px, 5.4vw, 78px); line-height: 1.03; font-weight: 800; letter-spacing: -0.025em; color: #12161C; text-wrap: balance">The vendor says it works. Who checked?</h1>
+<p style="margin: 0; max-width: 34em; font-size: 21px; line-height: 1.45; font-weight: 600; color: #12161C">For insurers writing AI coverage, companies buying AI, and investors doing diligence.</p>
+<p style="margin: 0; max-width: 38em; font-size: 19px; line-height: 1.6; color: #3B4450; text-wrap: pretty">When an AI vendor says its product is safe or accurate, we examine the evidence behind that one claim, as examiners who don't work for the vendor, and sign what it does and doesn't show. Today most buyers, insurers and investors have the vendor's own test reports to go on, and a report can look convincing while testing the wrong thing.</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 8px">
+<a href="mailto:hello@zeropositionexam.com" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; background: #1B3B6F; color: #FFFFFF; font-size: 16px; font-weight: 600; text-decoration: none">Send us a vendor's claim</a>
+<a href="#example" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; font-weight: 600; color: #1B3B6F">Run the check yourself</a>
+</div>
+</div>
+<aside aria-label="Where this stands" style="flex: 1 1 340px; min-width: 0; box-sizing: border-box; background: #F2F4F7; border: 1px solid #D3D9E0; border-top: 4px solid #1B3B6F; padding: 24px 28px; display: flex; flex-direction: column">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F; padding-bottom: 4px">Where this stands · November 2026</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-bottom: 1px solid #D3D9E0">
+<div style="font-size: 40px; line-height: 1; font-weight: 800; letter-spacing: -0.02em; color: #12161C">656</div>
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3B4450">mistakes my AI agents made working for me, logged since September with what caught each one.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-bottom: 1px solid #D3D9E0">
+<div style="font-size: 30px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; color: #12161C">March 2027</div>
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3B4450">Blind test of our own method. Everything released by July 31, 2027, pass or fail, if the work is funded in January.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 18px 0 4px">
+<div style="font-size: 30px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; color: #12161C">Second reviewer</div>
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3B4450">On every finding. Releases it, or sends it back with the point in dispute.</p>
+</div>
+</aside>
+</div>
+</section>
 
-  <section class="sec" id="example" aria-labelledby="ex-h">
-    <div class="wrap">
-      <div class="rail"><p class="label">An example</p><span class="stamp">Verified · my agent, my machine</span></div>
-      <div class="body">
-        <h2 id="ex-h">The list that told the inspector where to look</h2>
-        <p class="read">My agent added an action to a test copy of my system and left it out of the declared list. It then ran the completeness check. It came back PASS. The validator passed 14 of 14 cases. The preflight passed 17 of 17 checks. This was a test copy; the protected system was not changed.</p>
-        <p class="read">The action was there the whole time. The checks read the list to decide what to look for, and it wasn't on the list.</p>
-        <figure class="fig">
-          <svg class="dg-wide" viewBox="0 0 760 300" role="img" aria-labelledby="dgw-t dgw-d">
-            <title id="dgw-t">The list that told the inspector where to look</title>
-            <desc id="dgw-d">The completeness check reads the declared list and returns PASS. The action my agent added to the test copy is missing from that list, so this check does not cover it.</desc>
-            <rect class="dg-line dg-surf" x="10" y="24" width="290" height="196" stroke-width="1"/>
-            <text class="dg-tb dg-ink" x="26" y="50">THE LIST THE CHECK READS</text>
-            <line class="dg-rule" x1="10" y1="64" x2="300" y2="64" stroke-width="1"/>
-            <polyline class="dg-pass-s" points="28,80 33,85 42,75" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="86">Action on the list</text>
-            <line class="dg-rule" x1="10" y1="102" x2="300" y2="102" stroke-width="1"/>
-            <polyline class="dg-pass-s" points="28,114 33,119 42,109" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="120">Action on the list</text>
-            <line class="dg-rule" x1="10" y1="136" x2="300" y2="136" stroke-width="1"/>
-            <polyline class="dg-pass-s" points="28,148 33,153 42,143" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="154">Action on the list</text>
-            <line class="dg-rule" x1="10" y1="170" x2="300" y2="170" stroke-width="1"/>
-            <polyline class="dg-pass-s" points="28,182 33,187 42,177" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="188">Action on the list</text>
-            <line class="dg-line" x1="312" y1="122" x2="436" y2="122" stroke-width="1"/>
-            <polyline class="dg-line" points="428,115 438,122 428,129" stroke-width="1"/>
-            <text class="dg-t dg-muted" x="314" y="108">The check reads</text>
-            <text class="dg-t dg-muted" x="314" y="146">the list</text>
-            <rect class="dg-pass-s dg-surf" x="452" y="62" width="296" height="120" stroke-width="1.5"/>
-            <text class="dg-big dg-pass" x="600" y="130" text-anchor="middle">PASS</text>
-            <text class="dg-tb dg-pass" x="600" y="160" text-anchor="middle">14 OF 14 · 17 OF 17</text>
-            <rect class="dg-acc-s" x="10" y="236" width="470" height="58" stroke-width="1.5" stroke-dasharray="6 5"/>
-            <text class="dg-tb dg-acc" x="26" y="260">THE ACTION ADDED IN THE TEST</text>
-            <text class="dg-t dg-ink2" x="26" y="282">Not covered by this check. It wasn't on the list.</text>
-          </svg>
-          <svg class="dg-tall" viewBox="0 0 340 540" role="img" aria-labelledby="dgt-t dgt-d">
-            <title id="dgt-t">The list that told the inspector where to look</title>
-            <desc id="dgt-d">The completeness check reads the declared list and returns PASS. The action my agent added to the test copy is missing from that list, so this check does not cover it.</desc>
-            <rect class="dg-line dg-surf" x="10" y="20" width="320" height="200" stroke-width="1"/>
-            <text class="dg-tb dg-ink" x="26" y="48">THE LIST THE CHECK READS</text>
-            <line class="dg-rule" x1="10" y1="62" x2="330" y2="62" stroke-width="1"/>
-            <polyline class="dg-pass-s" points="28,82 33,87 42,77" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="88">Action on the list</text>
-            <line class="dg-rule" x1="10" y1="102" x2="330" y2="102" stroke-width="1"/>
-            <polyline class="dg-pass-s" points="28,122 33,127 42,117" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="128">Action on the list</text>
-            <line class="dg-rule" x1="10" y1="142" x2="330" y2="142" stroke-width="1"/>
-            <polyline class="dg-pass-s" points="28,162 33,167 42,157" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="168">Action on the list</text>
-            <line class="dg-rule" x1="10" y1="182" x2="330" y2="182" stroke-width="1"/>
-            <polyline class="dg-pass-s" points="28,200 33,205 42,195" stroke-width="1.6"/><text class="dg-t dg-ink2" x="58" y="206">Action on the list</text>
-            <line class="dg-line" x1="170" y1="228" x2="170" y2="284" stroke-width="1"/>
-            <polyline class="dg-line" points="163,276 170,286 177,276" stroke-width="1"/>
-            <text class="dg-t dg-muted" x="184" y="252">The check reads</text>
-            <text class="dg-t dg-muted" x="184" y="270">the list</text>
-            <rect class="dg-pass-s dg-surf" x="40" y="296" width="260" height="104" stroke-width="1.5"/>
-            <text class="dg-big dg-pass" x="170" y="354" text-anchor="middle">PASS</text>
-            <text class="dg-tb dg-pass" x="170" y="384" text-anchor="middle">14 OF 14 · 17 OF 17</text>
-            <rect class="dg-acc-s" x="10" y="428" width="320" height="96" stroke-width="1.5" stroke-dasharray="6 5"/>
-            <text class="dg-tb dg-acc" x="26" y="464">THE ACTION ADDED IN THE TEST</text>
-            <text class="dg-t dg-ink2" x="26" y="492">Not covered by this check.</text>
-            <text class="dg-t dg-ink2" x="26" y="512">It wasn't on the list.</text>
-          </svg>
-          <figcaption class="muted">Drawn from my agent's test on my machine. The rows stand in for the actions on the list.</figcaption>
-        </figure>
-        <span class="stamp inf">Inferred · what I take from this</span>
-        <p class="read">If the list defines the scope, nothing off the list gets checked, and a pass only tells you about the list.</p>
-        <div class="box">
-          <h3>What I don't claim</h3>
-          <p>I don't claim a stronger model fixes this, that my setup is typical, or that anyone else's product fails the same way. I want someone who didn't build it to check.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="example" style="background: #F2F4F7; border-top: 1px solid #D3D9E0">
+<div style="max-width: 1264px; margin: 0 auto; padding: 64px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 40px 56px">
+<div style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div class="eyebrow">The problem, in one check</div>
+<h2 class="h2">Run the check my agent ran</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3B4450; text-wrap: pretty">My agent added an action to a test copy of my system and left it off the declared list. Then it ran the completeness check. Press the button to run it the same way.</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<button type="button" id="demo-run" class="btn-primary"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14"><path d="M3 1.5 L12 7 L3 12.5 Z" fill="#FFFFFF"></path></svg><span id="demo-run-label">Run the check</span></button>
+<button type="button" id="demo-reset" class="btn-secondary">Reset</button>
+</div>
+<div class="stamp">Verified · my agent, my machine</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #56606C">This was a test copy; the protected system was not changed. The rows stand in for the actions on the list.</p>
+<noscript><p style="margin: 0; font-size: 15px; line-height: 1.6; color: #12161C">Result: PASS. Completeness check passed. Validator 14 of 14. Preflight 17 of 17. The action was there the whole time. The checks read the list to decide what to look for, and it wasn't on the list.</p></noscript>
+</div>
 
-  <section class="sec" id="exam" aria-labelledby="exam-h">
-    <div class="wrap">
-      <div class="rail"><p class="label">The examination</p></div>
-      <div class="body">
-        <h2 id="exam-h">What an examination checks, and what it doesn't</h2>
-        <p class="read">It's one examination, for anyone relying on a specific AI claim: an insurer pricing coverage, a company buying an AI product, or an investor in a deal. You name the claims your decision depends on. For each claim, the report gives two findings.</p>
-        <p class="read">First, what the vendor's evidence is: missing, shown to be flawed, not enough to judge, sound but short of the claim, or sound and reaching it. Second, whether sound evidence inside the claim's scope shows the claim is false. If none does, that isn't a pass.</p>
-        <div class="pair">
-          <div class="box">
-            <h3>What it doesn't do</h3>
-            <p>It doesn't test the product. It doesn't say whether the product works, is safe, is good, or will perform once it's deployed. There's no score, grade, tier or certification. It says nothing about claims you didn't name, beyond listing them. The examiner doesn't fix anything.</p>
-          </div>
-          <div class="box">
-            <h3>What it can't tell you</h3>
-            <ul>
-              <li>It can't confirm the records are real beyond checking them for consistency.</li>
-              <li>It can't confirm the version tested is the one you'd receive.</li>
-              <li>Zero problems found in a sample means zero found in that sample.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="box">
-          <h3>What you bring</h3>
-          <p>The claims you rely on, and the vendor's evidence for each, through you and under your NDA. The examiner needs no source code, running copy of the product, or credentials. If a check needs one of those, the report says unknown and names what it needs.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<figure class="panel" style="flex: 1 1 540px; min-width: 0; margin: 0; padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<div class="demo-grid demo-head">
+<span>On the declared list</span>
+<span></span>
+<span>What the check did</span>
+</div>
+<div id="demo-rows" style="display: flex; flex-direction: column; gap: 8px">
+<div class="demo-grid demo-row"><span class="demo-item">Action on the list</span><svg class="demo-arrow" aria-hidden="true" width="28" height="12" viewBox="0 0 28 12"><path d="M2 6 L24 6"></path><path d="M19 2 L25 6 L19 10"></path></svg><span class="demo-status"><span class="st-wait">Waiting</span><span class="st-active" hidden>Checking</span><span class="st-done" hidden><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#1B3B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Checked</span></span></div>
+<div class="demo-grid demo-row"><span class="demo-item">Action on the list</span><svg class="demo-arrow" aria-hidden="true" width="28" height="12" viewBox="0 0 28 12"><path d="M2 6 L24 6"></path><path d="M19 2 L25 6 L19 10"></path></svg><span class="demo-status"><span class="st-wait">Waiting</span><span class="st-active" hidden>Checking</span><span class="st-done" hidden><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#1B3B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Checked</span></span></div>
+<div class="demo-grid demo-row"><span class="demo-item">Action on the list</span><svg class="demo-arrow" aria-hidden="true" width="28" height="12" viewBox="0 0 28 12"><path d="M2 6 L24 6"></path><path d="M19 2 L25 6 L19 10"></path></svg><span class="demo-status"><span class="st-wait">Waiting</span><span class="st-active" hidden>Checking</span><span class="st-done" hidden><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#1B3B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Checked</span></span></div>
+<div class="demo-grid demo-row"><span class="demo-item">Action on the list</span><svg class="demo-arrow" aria-hidden="true" width="28" height="12" viewBox="0 0 28 12"><path d="M2 6 L24 6"></path><path d="M19 2 L25 6 L19 10"></path></svg><span class="demo-status"><span class="st-wait">Waiting</span><span class="st-active" hidden>Checking</span><span class="st-done" hidden><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#1B3B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Checked</span></span></div>
+<div class="demo-grid demo-row"><span class="demo-item">Action on the list</span><svg class="demo-arrow" aria-hidden="true" width="28" height="12" viewBox="0 0 28 12"><path d="M2 6 L24 6"></path><path d="M19 2 L25 6 L19 10"></path></svg><span class="demo-status"><span class="st-wait">Waiting</span><span class="st-active" hidden>Checking</span><span class="st-done" hidden><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#1B3B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Checked</span></span></div>
+</div>
+<div id="demo-offlist" class="demo-grid demo-row" style="padding-top: 6px; border-top: 1px dashed #D3D9E0" hidden>
+<span class="demo-item demo-off">Action my agent added, never on the list</span>
+<svg aria-hidden="true" width="28" height="12" viewBox="0 0 28 12"><path d="M2 6 L24 6" fill="none" stroke="#9C4600" stroke-width="1.5" stroke-dasharray="3 3"></path><path d="M19 2 L25 6 L19 10" fill="none" stroke="#9C4600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="demo-item demo-off" style="border-style: dashed; background: #FFFFFF">Not looked for</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: 10px; padding-top: 16px; border-top: 2px solid #12161C; min-height: 56px" role="status">
+<span id="demo-pending" class="mono-label" style="font-size: 14px; color: #56606C">Result: <span id="demo-status-text">not run yet</span></span>
+<span id="demo-pass" hidden style="display: contents"><span class="mono" style="font-size: 40px; line-height: 1; font-weight: 600; letter-spacing: 0.04em; color: #1B3B6F">PASS</span><span style="flex: 1 1 220px; min-width: 0; font-size: 15px; line-height: 1.5; color: #3B4450">Completeness check passed. Validator 14 of 14. Preflight 17 of 17.</span></span>
+</div>
+<div id="demo-inference" hidden style="display: flex; flex-direction: column; gap: 10px; margin-top: 8px; padding: 18px; background: #F2F4F7">
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #12161C">The action was there the whole time. The checks read the list to decide what to look for, and it wasn't on the list.</p>
+<div class="stamp stamp-inf">Inferred · what I take from this</div>
+<p style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #12161C">If the list defines the scope, nothing off the list gets checked, and a pass only tells you about the list.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #3B4450">I don't claim a stronger model fixes this, that my setup is typical, or that anyone else's product fails the same way.</p>
+</div>
+</figure>
+</div>
+</section>
 
-  <section class="sec" id="test" aria-labelledby="test-h">
-    <div class="wrap">
-      <div class="rail"><p class="label">Our own test</p></div>
-      <div class="body">
-        <h2 id="test-h">We test our method first, in public</h2>
-        <p class="read">Before we sell an examination, we test the method blind. A red team builds eight made-up vendor cases, two clean and six with planted faults. A human inspector and an AI inspector work them apart. Then an outside examiner repeats the round without the key. Everything is released, pass or fail.</p>
-        <p class="read">I ask three questions of any check, starting with my own.</p>
-        <div class="three">
-          <div><strong>Who wrote the list?</strong><span>Not the vendor. Two lists, built apart. A red team plants problems in made-up evidence files, some outside both lists.</span></div>
-          <div><strong>Do I pay more for a pass?</strong><span>No. Every fee is set before the work starts, and a refusal pays the same.</span></div>
-          <div><strong>Who can overrule the result?</strong><span>Not me. A signer who wrote none of it applies the scoring rules. I can't overrule a refusal.</span></div>
-        </div>
-        <p class="read">Eight cases can't give a general error rate. They show whether the method catches what it's built to catch. More rounds come after that.</p>
-        <div class="box">
-          <h3>Where this stands</h3>
-          <p>The method is written. The seats for the blind test are being filled, and each person is named only after accepting in writing. The blind round is planned for March 2027, with everything released by July 31, 2027, if the work is funded in January. If funding comes later, the dates move.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="examination" style="background: #FFFFFF; border-top: 1px solid #D3D9E0">
+<div style="max-width: 1264px; margin: 0 auto; padding: 72px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 20px 64px">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">01 · The examination</div>
+<h2 style="margin: 0; font-size: clamp(30px, 3vw, 42px); line-height: 1.15; font-weight: 700; letter-spacing: -0.015em; color: #12161C; text-wrap: balance">What you get: two findings on each claim, signed</h2>
+</div>
+<p style="flex: 1 1 460px; min-width: 0; margin: 0; font-size: 18px; line-height: 1.6; color: #3B4450; text-wrap: pretty">You name the claims your decision depends on: as an insurer pricing coverage, a company buying an AI product, or an investor in a deal. For each claim, the report gives two findings.</p>
+</div>
 
-  <section class="sec" aria-labelledby="who-h">
-    <div class="wrap">
-      <div class="rail"><p class="label">Who examines</p></div>
-      <div class="body">
-        <h2 id="who-h">The examiner isn't me</h2>
-        <p class="read">I designed the method, and AI models drafted it. I'm not the examiner. The examiner signs the findings and has to have shown practice checking software or systems against stated criteria: for example, an FAA software designee, an independent verification and validation engineer, or a test and evaluation engineer.</p>
-        <p class="read">A second reviewer, independent of the examiner, reads every finding and either releases it or sends it back with the point in dispute. Both write down their ties to the vendor, to you and to the deal before the work starts. The vendor can answer written questions and can't edit a finding.</p>
-        <p class="read">None of this makes the examination a certification. It's a written finding on the vendor's evidence, and on what's still open, for the scope you named.</p>
-      </div>
-    </div>
-  </section>
+<article aria-label="Sample examination report" style="box-sizing: border-box; border: 1px solid #12161C; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding: 14px 24px; background: #12161C; color: #FFFFFF">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase">Examination report · Sample</span>
+<span style="font-size: 13px; line-height: 1.4; color: #D5DEEA">Illustration only. Not a real vendor, claim or finding.</span>
+</div>
+<div style="padding: 20px 24px; border-bottom: 1px solid #D3D9E0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #56606C">Claim examined</span>
+<span style="flex: 1 1 420px; min-width: 0; font-size: 20px; line-height: 1.4; font-weight: 600; color: #12161C">"Our system flags at least 9 in 10 fraudulent claims."</span>
+</div>
+<div style="display: flex; flex-wrap: wrap">
+<div style="flex: 3 1 520px; min-width: 0; box-sizing: border-box; padding: 24px; border-right: 1px solid #D3D9E0; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #56606C">Finding 1 · What the vendor's evidence is</div>
+<div role="group" aria-label="Evidence rating" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(112px, 100%), 1fr)); gap: 6px">
+<button type="button" class="lv" data-level="0" aria-pressed="false"><span class="lv-num">1</span><span class="lv-label">Missing</span></button>
+<button type="button" class="lv" data-level="1" aria-pressed="false"><span class="lv-num">2</span><span class="lv-label">Shown to be flawed</span></button>
+<button type="button" class="lv" data-level="2" aria-pressed="false"><span class="lv-num">3</span><span class="lv-label">Not enough to judge</span></button>
+<button type="button" class="lv" data-level="3" aria-pressed="true"><span class="lv-num">4</span><span class="lv-label">Sound, but short of the claim</span></button>
+<button type="button" class="lv" data-level="4" aria-pressed="false"><span class="lv-num">5</span><span class="lv-label">Sound, and reaching it</span></button>
+</div>
+<p id="lv-desc" aria-live="polite" style="margin: 0; padding: 14px 16px; background: #F2F4F7; font-size: 16px; line-height: 1.55; color: #12161C"><strong><span id="lv-label">Sound, but short of the claim</span>.</strong> <span id="lv-text">The evidence holds up, but it supports less than the claim says.</span></p>
+<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #56606C">Click a rating to see what it means. In this sample the evidence rates 4.</p>
+</div>
+<div style="flex: 2 1 340px; min-width: 0; box-sizing: border-box; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #56606C">Finding 2 · Evidence the claim is false</div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid #D3D9E0">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 22px; font-weight: 600; color: #12161C">None found</span>
+</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">We look for sound evidence inside the claim's scope that shows the claim is false. Finding none isn't a pass.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 16px 40px; padding: 18px 24px; border-top: 1px solid #D3D9E0; background: #F8F9FB">
+<span style="display: flex; flex-direction: column; gap: 4px; min-width: 200px"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #56606C">Examiner</span><span style="font-size: 15px; color: #12161C; border-bottom: 1px solid #12161C; padding-bottom: 4px; min-width: 200px">Signed</span></span>
+<span style="display: flex; flex-direction: column; gap: 4px; min-width: 200px"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #56606C">Second reviewer</span><span style="font-size: 15px; color: #12161C; border-bottom: 1px solid #12161C; padding-bottom: 4px; min-width: 200px">Released</span></span>
+<span style="flex: 1 1 280px; align-self: flex-end; font-size: 13px; line-height: 1.5; color: #56606C">No score, grade, tier or certification. A written finding on the evidence, for the scope you named.</span>
+</div>
+</article>
 
-  <section class="sec" aria-labelledby="mkt-h">
-    <div class="wrap">
-      <div class="rail"><p class="label">The market</p></div>
-      <div class="body">
-        <h2 id="mkt-h">What exists, and what doesn't</h2>
-        <p class="read">The market today offers deal diligence, certification of how a company manages AI (ISO/IEC 42001), checks the vendor pays for, and checks run by an insurer that also sells the coverage. I haven't found a published method, run by examiners who don't work for the vendor, that checks whether the evidence behind a specific AI claim holds up, tested blind, repeated by an outside examiner, with an error rate.</p>
-        <p class="read">In buildings, electrical products and aircraft software, the company being checked doesn't write the standard by itself or decide who's qualified to check against it. For AI, standards are starting to form. The rest mostly isn't there yet.</p>
-        <p class="read">On October 14, Kansas sued OpenAI under its Consumer Protection Act, alleging its safety claims had no reasonable basis when they were made. Seven other states filed the same day. No court has ruled.</p>
-        <p class="muted">News coverage: <a href="https://www.kctv5.com/2026/10/14/kansas-ag-kris-kobach-announces-lawsuit-against-openai/">KCTV5, October 14, 2026</a>; <a href="https://www.hppr.org/hppr-news/2026-10-16/kansas-attorney-general-and-others-move-to-sue-openai-in-state-courts">HPPR, October 16, 2026</a>.</p>
-      </div>
-    </div>
-  </section>
+<div style="display: flex; flex-direction: column; border-top: 1px solid #D3D9E0">
+<details style="border-bottom: 1px solid #D3D9E0">
+<summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 0 4px; cursor: pointer; font-size: 18px; font-weight: 700; color: #12161C">What it doesn't do<span aria-hidden="true" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 20px; color: #1B3B6F">+</span></summary>
+<p style="margin: 0; padding: 0 4px 20px; max-width: 60em; font-size: 16px; line-height: 1.6; color: #3B4450">It doesn't test the product. It doesn't say whether the product works, is safe, is good, or will perform once it's deployed. There's no score, grade, tier or certification. It says nothing about claims you didn't name, beyond listing them. The examiner doesn't fix anything.</p>
+</details>
+<details style="border-bottom: 1px solid #D3D9E0">
+<summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 0 4px; cursor: pointer; font-size: 18px; font-weight: 700; color: #12161C">What it can't tell you<span aria-hidden="true" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 20px; color: #1B3B6F">+</span></summary>
+<ul style="margin: 0; padding: 0 4px 20px 22px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; line-height: 1.6; color: #3B4450">
+<li>It can't confirm the records are real beyond checking them for consistency.</li>
+<li>It can't confirm the version tested is the one you'd receive.</li>
+<li>Zero problems found in a sample means zero found in that sample.</li>
+</ul>
+</details>
+<details style="border-bottom: 1px solid #D3D9E0">
+<summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 0 4px; cursor: pointer; font-size: 18px; font-weight: 700; color: #12161C">What you bring<span aria-hidden="true" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 20px; color: #1B3B6F">+</span></summary>
+<p style="margin: 0; padding: 0 4px 20px; max-width: 60em; font-size: 16px; line-height: 1.6; color: #3B4450">The claims you rely on, and the vendor's evidence for each, through you and under your NDA. The examiner needs no source code, running copy of the product, or credentials. If a check needs one of those, the report says unknown and names what it needs.</p>
+</details>
+</div>
+</div>
+</section>
 
-  <section class="sec" aria-labelledby="ask-h">
-    <div class="wrap">
-      <div class="rail"><p class="label">Before you rely on it</p></div>
-      <div class="body">
-        <h2 id="ask-h">Before you rely on a vendor's report, ask who checked it</h2>
-        <p class="read">If you're shown test results for an AI product you're about to insure, buy or fund, ask where they came from. These are the questions I'd ask first.</p>
-        <div class="qs">
-          <p>Who ran the tests, and did the company pay them?</p>
-          <p>Where did the list of things to test come from? If it came from the product, what isn't on it?</p>
-          <p>Are results on bad or unusual inputs reported apart from results on normal ones?</p>
-          <p>Who paid for the evaluation, and does the report say so?</p>
-          <p>If you run the same input again, do you get the same answer?</p>
-          <p>Can you read the full report, or only a summary and a badge?</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="method" style="background: #F2F4F7; border-top: 1px solid #D3D9E0">
+<div style="max-width: 1264px; margin: 0 auto; padding: 72px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 20px 64px">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">02 · Method and blind test</div>
+<h2 style="margin: 0; font-size: clamp(30px, 3vw, 42px); line-height: 1.15; font-weight: 700; letter-spacing: -0.015em; color: #12161C; text-wrap: balance">We test our method first, in public</h2>
+</div>
+<p style="flex: 1 1 460px; min-width: 0; margin: 0; font-size: 18px; line-height: 1.6; color: #3B4450; text-wrap: pretty">Before we sell an examination, we test the method blind. Eight cases can't give a general error rate. They show whether the method catches what it's built to catch. More rounds come after that.</p>
+</div>
 
-  <div class="band">
-    <div class="wrap">
-      <span class="stamp inf">Inferred · my comparison as a contractor</span>
-      <p class="big">I can't hand a family the keys until an inspector who doesn't work for me signs off. Who does that before you rely on an AI product?</p>
-    </div>
-  </div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 16px">
+<li style="box-sizing: border-box; background: #FFFFFF; border: 1px solid #D3D9E0; padding: 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">Step 1</span>
+<strong style="font-size: 19px; line-height: 1.3; color: #12161C">A red team builds the cases</strong>
+<span style="font-size: 16px; line-height: 1.55; color: #3B4450">Eight made-up vendor cases: two clean, and six with planted faults.</span>
+</li>
+<li style="box-sizing: border-box; background: #FFFFFF; border: 1px solid #D3D9E0; padding: 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">Step 2</span>
+<strong style="font-size: 19px; line-height: 1.3; color: #12161C">Two inspectors work them apart</strong>
+<span style="font-size: 16px; line-height: 1.55; color: #3B4450">A human inspector and an AI inspector work the same cases, apart.</span>
+</li>
+<li style="box-sizing: border-box; background: #FFFFFF; border: 1px solid #D3D9E0; padding: 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">Step 3</span>
+<strong style="font-size: 19px; line-height: 1.3; color: #12161C">An outside examiner repeats it</strong>
+<span style="font-size: 16px; line-height: 1.55; color: #3B4450">An outside examiner repeats the round without the key.</span>
+</li>
+<li style="box-sizing: border-box; background: #FFFFFF; border: 1px solid #D3D9E0; border-top: 4px solid #1B3B6F; padding: 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">Step 4</span>
+<strong style="font-size: 19px; line-height: 1.3; color: #12161C">Everything is released</strong>
+<span style="font-size: 16px; line-height: 1.55; color: #3B4450">Everything from the round is released, pass or fail.</span>
+</li>
+</ol>
 
-  <section class="sec" aria-labelledby="how-h">
-    <div class="wrap">
-      <div class="rail"><p class="label">How I work</p></div>
-      <div class="body">
-        <h2 id="how-h">If I ask who checked your work, I owe you the same answer about mine</h2>
-        <div class="three">
-          <div><strong>Outside readers</strong><span>I pay engineers who check aircraft and spacecraft software for a living to read my work and tell me where it's weakest. None of them endorsed anything.</span></div>
-          <div><strong>Mistakes</strong><span>I keep a log of the mistakes my AI agents make working for me, and what caught each one: 656 entries since September, at least 59 of them caught by me.</span></div>
-          <div><strong>Labels</strong><span>Verified means I saw it in a record or a source I can point to. Inferred means it's my inference, and I say so.</span></div>
-          <div><strong>Publishing</strong><span>Everything from the blind test is released, pass or fail. I won't publish a verdict on any named party.</span></div>
-        </div>
-        <div class="corr">
-          <p class="label">What I've taken back</p>
-          <p><s>A check that defines its own list will always report itself complete.</s></p>
-          <p>Wrong. It can fail its own checks for other reasons. What holds is narrower: a pass only tells you about the list.</p>
-          <p class="muted">Taken back September 19, 2026. If you find something wrong on this page, tell me. I'll fix it here and say what changed.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<h3 style="margin: 0; font-size: 22px; line-height: 1.3; font-weight: 700; color: #12161C">I ask three questions of any check, starting with my own</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 24px 32px">
+<div style="border-top: 2px solid #12161C; padding-top: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<strong style="font-size: 18px; line-height: 1.35; color: #12161C">Who wrote the list?</strong>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3B4450">Not the vendor. Two lists, built apart. A red team plants problems in made-up evidence files, some outside both lists.</p>
+</div>
+<div style="border-top: 2px solid #12161C; padding-top: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<strong style="font-size: 18px; line-height: 1.35; color: #12161C">Do I pay more for a pass?</strong>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3B4450">No. Every fee is set before the work starts, and a refusal pays the same.</p>
+</div>
+<div style="border-top: 2px solid #12161C; padding-top: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<strong style="font-size: 18px; line-height: 1.35; color: #12161C">Who can overrule the result?</strong>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3B4450">Not me. A signer who wrote none of it applies the scoring rules. I can't overrule a refusal.</p>
+</div>
+</div>
+</div>
 
-  <section class="sec" id="contact" aria-labelledby="ct-h">
-    <div class="wrap">
-      <div class="rail"><p class="label">Contact</p></div>
-      <div class="body">
-        <h2 id="ct-h">Who I want to hear from</h2>
-        <div class="who">
-          <div><strong>Insurers writing AI coverage</strong><span>If you're pricing a policy on an AI product, tell me what the vendor showed you.</span></div>
-          <div><strong>Companies buying AI</strong><span>If a vendor's claim is part of your decision, send me the claim and the evidence behind it.</span></div>
-          <div><strong>Investors in an AI deal</strong><span>Send me the test results you were shown. I'll look for what they leave out.</span></div>
-          <div><strong>People who check things for a living</strong><span>Independent verification and validation, aircraft software, test and evaluation. I'll pay for your time to read one document and tell me where it's weakest.</span></div>
-        </div>
-        <div class="box">
-          <h3>About</h3>
-          <p>I'm a residential developer, builder and designer, and a multifamily and commercial contractor, with more than 200 completed projects. I hold a Class A general contractor license. I've worked on Zero Position since August 2026, out of trying to run my own company on AI.</p>
-          <p class="muted">Zac Carlton · Founder, Zero Position · Dodge City, Kansas · zac@zeropositionexam.com · linkedin.com/in/zaccarlton</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
+<div style="box-sizing: border-box; background: #FFFFFF; border: 1px solid #D3D9E0; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+<h3 style="margin: 0; font-size: 22px; line-height: 1.3; font-weight: 700; color: #12161C">Where this stands</h3>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 20px 24px">
+<li style="border-top: 4px solid #1B3B6F; padding-top: 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">Done</span>
+<span style="font-size: 16px; line-height: 1.5; color: #12161C">The method is written.</span>
+</li>
+<li style="border-top: 4px solid #1B3B6F; padding-top: 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">Under way</span>
+<span style="font-size: 16px; line-height: 1.5; color: #12161C">The seats for the blind test are being filled. Each person is named only after accepting in writing.</span>
+</li>
+<li style="border-top: 4px dashed #8D98A6; padding-top: 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3B4450">March 2027</span>
+<span style="font-size: 16px; line-height: 1.5; color: #12161C">The blind round.</span>
+</li>
+<li style="border-top: 4px dashed #8D98A6; padding-top: 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3B4450">By July 31, 2027</span>
+<span style="font-size: 16px; line-height: 1.5; color: #12161C">Everything released, pass or fail.</span>
+</li>
+</ol>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #56606C">These dates hold if the work is funded in January. If funding comes later, the dates move.</p>
+</div>
+</div>
+</section>
 
-<footer>
-  <div class="wrap">
-    <span>© 2026 Zero Position Holdings, LLC. Results on this page come from my own systems unless a source is linked.</span>
-    <span>Updated November 1, 2026</span>
-  </div>
+<section id="industries" style="background: #FFFFFF; border-top: 1px solid #D3D9E0">
+<div style="max-width: 1264px; margin: 0 auto; padding: 72px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 20px 64px">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">03 · How mature industries do it</div>
+<h2 style="margin: 0; font-size: clamp(30px, 3vw, 42px); line-height: 1.15; font-weight: 700; letter-spacing: -0.015em; color: #12161C; text-wrap: balance">How mature fields check a claim</h2>
+</div>
+<p style="flex: 1 1 460px; min-width: 0; margin: 0; font-size: 18px; line-height: 1.6; color: #3B4450; text-wrap: pretty">In these fields, the company being checked doesn't write the standard by itself or decide who's qualified to check against it. Forensic science went a step further: it measured how often its own examiners get it wrong.</p>
+</div>
+
+<div style="box-sizing: border-box; background: #0E1F3B; padding: 40px; display: flex; flex-wrap: wrap; gap: 32px 56px">
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #BCCBE0">The lead example · fingerprints</div>
+<h3 style="margin: 0; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; color: #FFFFFF; text-wrap: balance">A measured error rate, and a second examiner who catches it</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #D5DEEA">In 2011 the FBI and Noblis tested 169 experienced examiners on prints where the right answer was known, and published how often they were wrong.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 16px; padding: 16px 0; border-top: 1px solid #3A5078; border-bottom: 1px solid #3A5078">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 40px; line-height: 1; font-weight: 800; letter-spacing: -0.02em; color: #FFFFFF">0.1%</span><span style="font-size: 14px; line-height: 1.45; color: #D5DEEA">false positives: a match called between prints from different people</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 40px; line-height: 1; font-weight: 800; letter-spacing: -0.02em; color: #FFFFFF">7.5%</span><span style="font-size: 14px; line-height: 1.45; color: #D5DEEA">false negatives: a real match missed</span></div>
+</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #D5DEEA">In 2016 the President's Council of Advisors on Science and Technology found fingerprint analysis to be a valid method, called its false positive rate substantial, and said juries should be told about it.</p>
+<div style="display: inline-flex; align-self: flex-start; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; line-height: 1.3; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 10px; border: 1px dashed #BCCBE0; color: #E6ECF4">Inferred · my comparison</div>
+<p style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 600; color: #FFFFFF">That's what I want for AI claims: a written method, evidence against the claim, a known error rate, and a second examiner who can catch the first.</p>
+<p style="margin: 0; font-size: 13px; line-height: 1.6; color: #BCCBE0">Sources: <a href="https://doi.org/10.1073/pnas.1018707108" style="color: #FFFFFF">Ulery, Hicklin, Buscaglia and Roberts, PNAS, 2011</a> · <a href="https://obamawhitehouse.archives.gov/sites/default/files/microsites/ostp/PCAST/pcast_forensic_science_report_final.pdf" style="color: #FFFFFF">PCAST, 2016</a></p>
+</div>
+
+<figure style="flex: 1 1 460px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px">
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #BCCBE0">1,000 comparisons, different people</span>
+<button type="button" id="second-toggle" aria-pressed="false" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid #FFFFFF; background: #FFFFFF; color: #0E1F3B; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer">Add a second examiner</button>
+</div>
+<div id="dots" class="dots" data-second="false" role="img" aria-label="1,000 comparisons of prints from different people; one was wrongly called a match" style="display: grid; grid-template-columns: repeat(40, minmax(0, 1fr)); gap: 3px; padding: 14px; background: #13284C">
+<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="fp"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; line-height: 1.4; color: #D5DEEA">
+<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #3A5078; border: 1px solid #7C8FAE"></span>Correct: not a match</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F08A3C"></span>Called a match, wrongly</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0 0 2px #7FB0FF"></span>Caught by a second examiner</span>
+</div>
+<figcaption id="dots-caption" aria-live="polite" style="font-size: 15px; line-height: 1.55; color: #FFFFFF">Each dot is one comparison of prints from two different people. At the study's 0.1% false positive rate, about 1 in 1,000 was wrongly called a match.</figcaption>
+</figure>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px">
+<h3 style="margin: 0; font-size: 22px; line-height: 1.3; font-weight: 700; color: #12161C">Who checks the claim, field by field</h3>
+<span style="font-size: 14px; color: #56606C">Click a field for who checks it.</span>
+</div>
+<div style="overflow-x: auto; border: 1px solid #D3D9E0">
+<div style="min-width: 820px; display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: minmax(180px, 1.3fr) repeat(4, minmax(0, 1fr)); gap: 12px; padding: 14px 18px; background: #F2F4F7; border-bottom: 2px solid #12161C; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px; font-weight: 600; line-height: 1.35; letter-spacing: 0.08em; text-transform: uppercase; color: #12161C">
+<span>Field</span>
+<span>Checked by someone who didn't make the claim</span>
+<span>Written method or standard</span>
+<span>Someone checks the checker</span>
+<span>Error rate measured and published</span>
+</div>
+<div class="frow" data-ai="false" style="display: flex; flex-direction: column; border-bottom: 1px solid #D3D9E0">
+<button type="button" class="frow-btn" aria-expanded="true" aria-controls="fd-0" style="display: grid; grid-template-columns: minmax(180px, 1.3fr) repeat(4, minmax(0, 1fr)); gap: 12px; align-items: center; width: 100%; min-height: 60px; padding: 12px 18px; border: 0; font-family: inherit; text-align: left; cursor: pointer">
+<span style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; color: #12161C"><span class="fsign" aria-hidden="true"></span>Forensic fingerprints</span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+</button>
+<div class="fdetail" id="fd-0" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px 32px; padding: 4px 18px 18px 44px; font-size: 15px; line-height: 1.55; color: #3B4450">
+<p style="margin: 0"><strong style="color: #12161C">The claim.</strong> This print came from this person.</p>
+<p style="margin: 0"><strong style="color: #12161C">Who checks it.</strong> A latent print examiner, working to a written method (ACE-V).</p>
+<p style="margin: 0"><strong style="color: #12161C">What keeps it honest.</strong> A second examiner verifies identifications. Accredited labs are assessed by an outside body, and examiners take regular proficiency tests. Error rates are measured in published studies.</p>
+</div>
+</div>
+<div class="frow" data-ai="false" style="display: flex; flex-direction: column; border-bottom: 1px solid #D3D9E0">
+<button type="button" class="frow-btn" aria-expanded="false" aria-controls="fd-1" style="display: grid; grid-template-columns: minmax(180px, 1.3fr) repeat(4, minmax(0, 1fr)); gap: 12px; align-items: center; width: 100%; min-height: 60px; padding: 12px 18px; border: 0; font-family: inherit; text-align: left; cursor: pointer">
+<span style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; color: #12161C"><span class="fsign" aria-hidden="true"></span>Aircraft software</span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; padding: 3px 10px; border: 1.5px solid #C2783A; background: #FFF6EE; color: #7A3600; font-size: 13px; font-weight: 700">Not found</span></span>
+</button>
+<div class="fdetail" id="fd-1" hidden style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px 32px; padding: 4px 18px 18px 44px; font-size: 15px; line-height: 1.55; color: #3B4450">
+<p style="margin: 0"><strong style="color: #12161C">The claim.</strong> This design meets the airworthiness rules.</p>
+<p style="margin: 0"><strong style="color: #12161C">Who checks it.</strong> An FAA Designated Engineering Representative, who signs a statement of compliance on FAA Form 8110-3.</p>
+<p style="margin: 0"><strong style="color: #12161C">What keeps it honest.</strong> The FAA appoints its designees and oversees their work.</p>
+</div>
+</div>
+<div class="frow" data-ai="false" style="display: flex; flex-direction: column; border-bottom: 1px solid #D3D9E0">
+<button type="button" class="frow-btn" aria-expanded="false" aria-controls="fd-2" style="display: grid; grid-template-columns: minmax(180px, 1.3fr) repeat(4, minmax(0, 1fr)); gap: 12px; align-items: center; width: 100%; min-height: 60px; padding: 12px 18px; border: 0; font-family: inherit; text-align: left; cursor: pointer">
+<span style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; color: #12161C"><span class="fsign" aria-hidden="true"></span>Electrical products</span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; padding: 3px 10px; border: 1.5px solid #C2783A; background: #FFF6EE; color: #7A3600; font-size: 13px; font-weight: 700">Not found</span></span>
+</button>
+<div class="fdetail" id="fd-2" hidden style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px 32px; padding: 4px 18px 18px 44px; font-size: 15px; line-height: 1.55; color: #3B4450">
+<p style="margin: 0"><strong style="color: #12161C">The claim.</strong> This product is safe to use at work.</p>
+<p style="margin: 0"><strong style="color: #12161C">Who checks it.</strong> A Nationally Recognized Testing Laboratory, testing against published safety standards.</p>
+<p style="margin: 0"><strong style="color: #12161C">What keeps it honest.</strong> OSHA decides which labs are recognized, and audits them.</p>
+</div>
+</div>
+<div class="frow" data-ai="false" style="display: flex; flex-direction: column; border-bottom: 1px solid #D3D9E0">
+<button type="button" class="frow-btn" aria-expanded="false" aria-controls="fd-3" style="display: grid; grid-template-columns: minmax(180px, 1.3fr) repeat(4, minmax(0, 1fr)); gap: 12px; align-items: center; width: 100%; min-height: 60px; padding: 12px 18px; border: 0; font-family: inherit; text-align: left; cursor: pointer">
+<span style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; color: #12161C"><span class="fsign" aria-hidden="true"></span>Public company audits</span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+</button>
+<div class="fdetail" id="fd-3" hidden style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px 32px; padding: 4px 18px 18px 44px; font-size: 15px; line-height: 1.55; color: #3B4450">
+<p style="margin: 0"><strong style="color: #12161C">The claim.</strong> These financial statements are fairly stated.</p>
+<p style="margin: 0"><strong style="color: #12161C">Who checks it.</strong> An outside audit firm registered with the PCAOB.</p>
+<p style="margin: 0"><strong style="color: #12161C">What keeps it honest.</strong> The PCAOB inspects completed audits. In 2025, 23% of the audits it reviewed had not gathered enough evidence to support the opinion.</p>
+</div>
+</div>
+<div class="frow" data-ai="false" style="display: flex; flex-direction: column; border-bottom: 1px solid #D3D9E0">
+<button type="button" class="frow-btn" aria-expanded="false" aria-controls="fd-4" style="display: grid; grid-template-columns: minmax(180px, 1.3fr) repeat(4, minmax(0, 1fr)); gap: 12px; align-items: center; width: 100%; min-height: 60px; padding: 12px 18px; border: 0; font-family: inherit; text-align: left; cursor: pointer">
+<span style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; color: #12161C"><span class="fsign" aria-hidden="true"></span>Buildings</span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: #1B3B6F; color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Yes</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; padding: 3px 10px; border: 1.5px solid #1B3B6F; color: #1B3B6F; font-size: 13px; font-weight: 700">Partly</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; padding: 3px 10px; border: 1.5px solid #C2783A; background: #FFF6EE; color: #7A3600; font-size: 13px; font-weight: 700">Not found</span></span>
+</button>
+<div class="fdetail" id="fd-4" hidden style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px 32px; padding: 4px 18px 18px 44px; font-size: 15px; line-height: 1.55; color: #3B4450">
+<p style="margin: 0"><strong style="color: #12161C">The claim.</strong> This building was built to code.</p>
+<p style="margin: 0"><strong style="color: #12161C">Who checks it.</strong> A building inspector who works for the city, not the builder.</p>
+<p style="margin: 0"><strong style="color: #12161C">What keeps it honest.</strong> Inspections at set stages before the work is covered, and no certificate of occupancy until the inspector signs off. Many states license inspectors or require ICC certification; the rules vary by state.</p>
+</div>
+</div>
+<div class="frow" data-ai="true" style="display: flex; flex-direction: column; border-bottom: 1px solid #D3D9E0">
+<button type="button" class="frow-btn" aria-expanded="false" aria-controls="fd-5" style="display: grid; grid-template-columns: minmax(180px, 1.3fr) repeat(4, minmax(0, 1fr)); gap: 12px; align-items: center; width: 100%; min-height: 60px; padding: 12px 18px; border: 0; font-family: inherit; text-align: left; cursor: pointer">
+<span style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; color: #12161C"><span class="fsign" aria-hidden="true"></span>AI products, today</span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; padding: 3px 10px; border: 1.5px solid #1B3B6F; color: #1B3B6F; font-size: 13px; font-weight: 700">Partly</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; padding: 3px 10px; border: 1.5px solid #1B3B6F; color: #1B3B6F; font-size: 13px; font-weight: 700">Partly</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; padding: 3px 10px; border: 1.5px solid #1B3B6F; color: #1B3B6F; font-size: 13px; font-weight: 700">Partly</span></span>
+<span style="display: flex"><span style="display: inline-flex; align-items: center; padding: 3px 10px; border: 1.5px solid #C2783A; background: #FFF6EE; color: #7A3600; font-size: 13px; font-weight: 700">Not found</span></span>
+</button>
+<div class="fdetail" id="fd-5" hidden style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px 32px; padding: 4px 18px 18px 44px; font-size: 15px; line-height: 1.55; color: #3B4450">
+<p style="margin: 0"><strong style="color: #12161C">The claim.</strong> This product is safe, or accurate.</p>
+<p style="margin: 0"><strong style="color: #12161C">Who checks it.</strong> Most often, the vendor's own test reports.</p>
+<p style="margin: 0"><strong style="color: #12161C">What keeps it honest.</strong> Standards are starting to form. Certification bodies for ISO/IEC 42001 are accredited, but that standard certifies how a company manages AI, not whether a product claim holds up.</p>
+</div>
+</div>
+</div>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 1.55; color: #56606C">"Not found" means I looked for a published error rate and didn't find one. Sources for each cell go on the live page.</p>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="display: inline-flex; align-self: flex-start; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; line-height: 1.3; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 10px; border: 1px dashed #56606C; color: #3B4450">Inferred · my comparison as a contractor</div>
+<p style="margin: 0; font-size: 22px; line-height: 1.45; font-weight: 600; color: #12161C; text-wrap: pretty">I can't hand a family the keys until an inspector who doesn't work for me signs off. Who does that before you rely on an AI product?</p>
+</div>
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 18px; line-height: 1.3; font-weight: 700; color: #12161C">What exists today</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3B4450">The market today offers deal diligence, certification of how a company manages AI (ISO/IEC 42001), checks the vendor pays for, and checks run by an insurer that also sells the coverage. I haven't found a published method, run by examiners who don't work for the vendor, that checks whether the evidence behind a specific AI claim holds up, tested blind, repeated by an outside examiner, with an error rate.</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3B4450">On October 14, Kansas sued OpenAI under its Consumer Protection Act, alleging its safety claims had no reasonable basis when they were made. Seven other states filed the same day. No court has ruled. News coverage: <a href="https://www.kctv5.com/2026/10/14/kansas-ag-kris-kobach-announces-lawsuit-against-openai/">KCTV5, October 14, 2026</a>; <a href="https://www.hppr.org/hppr-news/2026-10-16/kansas-attorney-general-and-others-move-to-sue-openai-in-state-courts">HPPR, October 16, 2026</a>.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="evidence" style="background: #F2F4F7; border-top: 1px solid #D3D9E0">
+<div style="max-width: 1264px; margin: 0 auto; padding: 72px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 20px 64px">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">04 · Evidence</div>
+<h2 style="margin: 0; font-size: clamp(30px, 3vw, 42px); line-height: 1.15; font-weight: 700; letter-spacing: -0.015em; color: #12161C; text-wrap: balance">If I ask who checked your work, I owe you the same answer about mine</h2>
+</div>
+<p style="flex: 1 1 460px; min-width: 0; margin: 0; font-size: 18px; line-height: 1.6; color: #3B4450; text-wrap: pretty">I keep a log of the mistakes my AI agents make working for me, and what caught each one. Entries are sorted into classes so the same kind of mistake can be counted over time. The entries stay private. The counts are here.</p>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px">
+<div style="flex: 999 1 620px; min-width: 0; box-sizing: border-box; background: #FFFFFF; border: 1px solid #D3D9E0; padding: 28px; display: flex; flex-direction: column">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; padding-bottom: 14px; border-bottom: 2px solid #12161C">
+<h3 style="margin: 0; font-size: 22px; line-height: 1.3; font-weight: 700; color: #12161C">Mistakes by class</h3>
+<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #56606C">642 entries · as of [DATE]</span>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">A</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Inference presented as finding.</strong> Called a guess a finding.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 100%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">161</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">G</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Discretion substitution.</strong> Used its own judgment where a rule already said what to do.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 47.8%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">77</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">C</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Unbound reference.</strong> Pointed to a file, number or address that didn't resolve to what it named.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 39.1%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">63</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">L</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Step missed or out of order.</strong> Skipped a required step, or took it in the wrong order.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 29.8%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">48</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">H</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Status conflation.</strong> Treated filed as done, or counted as read.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 24.2%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">39</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">D</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Transcription.</strong> Copied a value by hand instead of reading or computing it.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 23.6%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">38</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">N</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Tool or instruction defect.</strong> A script, scan, connector or instruction couldn't do its job as written.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 21.1%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">34</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">O</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Unchecked state.</strong> Reported or acted on a state without reading it at its source first.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 21.1%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">34</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">B</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Fabricated observation.</strong> Supplied a value where an observation was required.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 16.8%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">27</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">M</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Delivery failure.</strong> The message failed its reader: wrong tone, unclear, or narrower than the question.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 9.3%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">15</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">J</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Custody execution.</strong> The content was right, but the wrong bytes reached the record.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 8.7%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">14</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">E</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Consent or authority overstep.</strong> Acted or quoted without the authority to.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 4.3%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">7</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">F</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Self-serving framing.</strong> Framed a result in its own favor.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 2.5%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">4</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">K</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Exposure.</strong> Put a private link, detail or protected text where a rule forbids it.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 1.9%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">3</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 2px solid #12161C">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 14px; font-weight: 600; color: #1B3B6F">I</span><span style="font-size: 14px; line-height: 1.45; color: #56606C"><strong style="font-size: 16px; color: #12161C">Working-record loss.</strong> Lost its own record of the steps it took.</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 1.2%; height: 10px; background: #1B3B6F"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #12161C">2</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px"></span><span style="font-size: 16px; line-height: 1.45; font-weight: 700; color: #3B4450">No class written</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 32.3%; height: 10px; background: #8D98A6"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #3B4450">52</span></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; padding: 10px 0; border-bottom: 1px solid #D3D9E0">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; gap: 14px"><span style="flex: 0 0 18px"></span><span style="font-size: 16px; line-height: 1.45; font-weight: 700; color: #3B4450">Other labels</span></div>
+<div style="flex: 0 1 260px; min-width: 160px; display: flex; align-items: center; gap: 12px"><div style="flex: 1 1 auto; height: 10px; background: #E3E8EE"><div style="width: 14.9%; height: 10px; background: #8D98A6"></div></div><span style="flex: 0 0 36px; text-align: right; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; color: #3B4450">24</span></div>
+</div>
+<p style="margin: 0; padding-top: 14px; font-size: 14px; line-height: 1.6; color: #56606C">Counted by the class written on each entry, for the 642 entries in the registry view of [DATE]. 656 are logged in all. [Recount from the registry before publishing.]</p>
+</div>
+
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="box-sizing: border-box; background: #FFFFFF; border: 1px solid #D3D9E0; border-top: 4px solid #1B3B6F; padding: 24px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 48px; line-height: 1; font-weight: 800; letter-spacing: -0.02em; color: #12161C">656</div>
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3B4450">entries since September, at least 59 of them caught by me.</p>
+</div>
+<div style="box-sizing: border-box; background: #FFFFFF; border: 1px solid #D3D9E0; padding: 24px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">The Casebook</div>
+<div style="font-size: 48px; line-height: 1; font-weight: 800; letter-spacing: -0.02em; color: #12161C">66</div>
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3B4450">public cases of AI errors that caused harm, each checked against its sources. Totals only on this page.</p>
+</div>
+<div style="box-sizing: border-box; background: #FFFFFF; border: 1px solid #D3D9E0; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 18px; line-height: 1.3; font-weight: 700; color: #12161C">How I label a claim</h3>
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; line-height: 1.3; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 8px; border: 1px solid #12161C; color: #12161C">Verified</span><span style="flex: 1 1 180px; font-size: 15px; line-height: 1.5; color: #3B4450">I saw it in a record or a source I can point to.</span></div>
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; line-height: 1.3; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 8px; border: 1px dashed #56606C; color: #3B4450">Inferred</span><span style="flex: 1 1 180px; font-size: 15px; line-height: 1.5; color: #3B4450">It's my inference, and I say so.</span></div>
+</div>
+<div style="box-sizing: border-box; background: #FFFFFF; border: 1px solid #D3D9E0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 18px; line-height: 1.3; font-weight: 700; color: #12161C">What I've taken back</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #56606C"><s>A check that defines its own list will always report itself complete.</s></p>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">Wrong. It can fail its own checks for other reasons. What holds is narrower: a pass only tells you about the list.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #56606C">Taken back September 19, 2026. If you find something wrong on this page, tell me. I'll fix it here and say what changed.</p>
+</div>
+<div style="box-sizing: border-box; background: #FFFFFF; border: 1px solid #D3D9E0; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 18px; line-height: 1.3; font-weight: 700; color: #12161C">Outside readers</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">I pay engineers who check aircraft and spacecraft software for a living to read my work and tell me where it's weakest. None of them endorsed anything. Everything from the blind test is released, pass or fail. I won't publish a verdict on any named party.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="people" style="background: #FFFFFF; border-top: 1px solid #D3D9E0">
+<div style="max-width: 1264px; margin: 0 auto; padding: 72px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 20px 64px">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">05 · People</div>
+<h2 style="margin: 0; font-size: clamp(30px, 3vw, 42px); line-height: 1.15; font-weight: 700; letter-spacing: -0.015em; color: #12161C; text-wrap: balance">The examiner isn't me</h2>
+</div>
+<p style="flex: 1 1 460px; min-width: 0; margin: 0; font-size: 18px; line-height: 1.6; color: #3B4450; text-wrap: pretty">I designed the method, and AI models drafted it. I'm not the examiner. The people who examine and review are named only after they accept in writing.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 20px">
+<div style="box-sizing: border-box; border: 1px solid #D3D9E0; padding: 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0">
+<img src="img/zac-carlton.jpg" width="72" height="72" alt="Photo of Zac Carlton" style="display: block; width: 72px; height: 72px; object-fit: cover; background: #E3E8EE">
+<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; line-height: 1.3; color: #12161C">Zac Carlton</strong><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #1B3B6F">Founder</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">Developer, design-builder and contractor with more than 200 completed projects. Holds a Class A general contractor license. Has worked on Zero Position since August 2026, out of trying to run his own company on AI.</p>
+<a href="https://www.linkedin.com/in/zaccarlton/" style="font-size: 15px; font-weight: 600">linkedin.com/in/zaccarlton</a>
+</div>
+<div style="box-sizing: border-box; border: 1px solid #D3D9E0; padding: 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0">
+<div aria-hidden="true" style="width: 72px; height: 72px; box-sizing: border-box; background: #E3E8EE; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; letter-spacing: 0.02em; color: #1B3B6F">MF</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; line-height: 1.3; color: #12161C">Marcus Fisher</strong><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #1B3B6F">Technical co-founder</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">Nearly 30 years at NASA, where his roles have included Senior Technical Fellow, Associate Director and Chief Engineer of the Independent Verification and Validation Program. Author of Software Verification and Validation: An Engineering and Scientific Approach (Springer). Built the second list of checks, apart from Zac's.</p>
+</div>
+<div style="box-sizing: border-box; border: 1.5px dashed #8D98A6; padding: 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0">
+<div style="width: 72px; height: 72px; box-sizing: border-box; border: 1.5px dashed #8D98A6; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #3B4450">SEAT</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; line-height: 1.3; color: #12161C">Examiner</strong><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #3B4450">Seat being filled</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">Signs the findings. Has shown practice checking software or systems against stated criteria: for example, an FAA software designee, an independent verification and validation engineer, or a test and evaluation engineer.</p>
+</div>
+<div style="box-sizing: border-box; border: 1.5px dashed #8D98A6; padding: 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0">
+<div style="width: 72px; height: 72px; box-sizing: border-box; border: 1.5px dashed #8D98A6; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #3B4450">SEAT</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; line-height: 1.3; color: #12161C">Second reviewer</strong><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #3B4450">Seat being filled</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">Independent of the examiner. Reads every finding and either releases it or sends it back with the point in dispute.</p>
+</div>
+</div>
+
+<p style="margin: 0; max-width: 60em; font-size: 16px; line-height: 1.6; color: #3B4450">The examiner and the second reviewer both write down their ties to the vendor, to you and to the deal before the work starts. The vendor can answer written questions and can't edit a finding. None of this makes the examination a certification. It's a written finding on the vendor's evidence, and on what's still open, for the scope you named.</p>
+</div>
+</section>
+
+<section id="contact" style="background: #0E1F3B">
+<div style="max-width: 1264px; margin: 0 auto; padding: 72px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #BCCBE0">06 · Contact</div>
+<h2 style="margin: 0; font-size: clamp(30px, 3vw, 42px); line-height: 1.15; font-weight: 700; letter-spacing: -0.015em; color: #FFFFFF; text-wrap: balance">Who I want to hear from</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 24px 32px">
+<div style="border-top: 2px solid #BCCBE0; padding-top: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<strong style="font-size: 18px; line-height: 1.35; color: #FFFFFF">Insurers writing AI coverage</strong>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #D5DEEA">If you're pricing a policy on an AI product, tell me what the vendor showed you.</p>
+</div>
+<div style="border-top: 2px solid #BCCBE0; padding-top: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<strong style="font-size: 18px; line-height: 1.35; color: #FFFFFF">Companies buying AI</strong>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #D5DEEA">If a vendor's claim is part of your decision, send me the claim and the evidence behind it.</p>
+</div>
+<div style="border-top: 2px solid #BCCBE0; padding-top: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<strong style="font-size: 18px; line-height: 1.35; color: #FFFFFF">Investors in an AI deal</strong>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #D5DEEA">Send me the test results you were shown. I'll look for what they leave out.</p>
+</div>
+<div style="border-top: 2px solid #BCCBE0; padding-top: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0">
+<strong style="font-size: 18px; line-height: 1.35; color: #FFFFFF">People who check things for a living</strong>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #D5DEEA">Independent verification and validation, aircraft software, test and evaluation. I'll pay for your time to read one document and tell me where it's weakest.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px">
+<a href="mailto:hello@zeropositionexam.com" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 26px; background: #FFFFFF; color: #0E1F3B; font-size: 18px; font-weight: 700; text-decoration: none; overflow-wrap: anywhere">hello@zeropositionexam.com</a>
+</div>
+</div>
+</section>
+
+<footer style="background: #FFFFFF; border-top: 1px solid #D3D9E0">
+<div style="max-width: 1264px; margin: 0 auto; padding: 28px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 32px; font-size: 14px; line-height: 1.5; color: #56606C">
+<span><strong style="color: #12161C">Zero Position</strong> · © 2026 Zero Position Holdings, LLC</span>
+<span>Results on this page come from my own systems unless a source is linked.</span>
+<span style="display: flex; flex-wrap: wrap; gap: 4px 16px"><a href="https://www.linkedin.com/company/zeropositionexam/">LinkedIn</a><span>Updated [DATE]</span></span>
+</div>
 </footer>
 
+</div>
 <script>
-(function(){
-  var btn=document.getElementById('copyBtn'), note=document.getElementById('copyNote'), addr=document.getElementById('addr');
-  function selectAddr(){var r=document.createRange();r.selectNodeContents(addr);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}
-  btn.addEventListener('click',function(){
-    var text=addr.textContent.trim();
-    try{
-      navigator.clipboard.writeText(text).then(function(){note.textContent='Copied.';},function(){selectAddr();note.textContent='Selected. Copy it from here.';});
-    }catch(e){selectAddr();note.textContent='Selected. Copy it from here.';}
+(function () {
+  // Run the check: five listed actions are checked one at a time; the added action is never looked for.
+  var run = document.getElementById('demo-run');
+  var runLabel = document.getElementById('demo-run-label');
+  var reset = document.getElementById('demo-reset');
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#demo-rows .demo-row'));
+  var offlist = document.getElementById('demo-offlist');
+  var pending = document.getElementById('demo-pending');
+  var statusText = document.getElementById('demo-status-text');
+  var pass = document.getElementById('demo-pass');
+  var inference = document.getElementById('demo-inference');
+  var step = 0, timer = null;
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  function render() {
+    rows.forEach(function (row, i) {
+      row.querySelector('.st-wait').hidden = !(step <= i);
+      row.querySelector('.st-active').hidden = !(step === i + 1);
+      row.querySelector('.st-done').hidden = !(step >= i + 2);
+    });
+    var revealed = step >= 7, passed = step >= 6;
+    offlist.hidden = !revealed;
+    inference.hidden = !revealed;
+    pass.hidden = !passed;
+    pending.hidden = passed;
+    statusText.textContent = step === 0 ? 'not run yet' : 'running';
+    runLabel.textContent = step === 0 ? 'Run the check' : (revealed ? 'Run it again' : 'Running');
+    run.setAttribute('aria-disabled', step > 0 && !revealed ? 'true' : 'false');
+  }
+  if (run) {
+    run.addEventListener('click', function () {
+      if (step !== 0 && step < 7) return;
+      stop();
+      step = 1; render();
+      timer = setInterval(function () {
+        step += 1; render();
+        if (step >= 7) stop();
+      }, 550);
+    });
+    reset.addEventListener('click', function () { stop(); step = 0; render(); });
+    render();
+  }
+
+  // Evidence rating: pick a level to read what it means.
+  var levelText = ["The vendor gave no evidence for this claim.", "The evidence has a defect that breaks it.", "There isn't enough evidence to decide either way.", "The evidence holds up, but it supports less than the claim says.", "The evidence holds up and supports the whole claim."];
+  var levelName = ["Missing", "Shown to be flawed", "Not enough to judge", "Sound, but short of the claim", "Sound, and reaching it"];
+  var lvButtons = Array.prototype.slice.call(document.querySelectorAll('.lv'));
+  lvButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var n = +btn.getAttribute('data-level');
+      lvButtons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      document.getElementById('lv-label').textContent = levelName[n];
+      document.getElementById('lv-text').textContent = levelText[n];
+    });
+  });
+
+  // Fingerprints: add or remove the second examiner.
+  var toggle = document.getElementById('second-toggle');
+  var dots = document.getElementById('dots');
+  var caption = document.getElementById('dots-caption');
+  var copy = {
+    off: { button: 'Add a second examiner', label: "1,000 comparisons of prints from different people; one was wrongly called a match", caption: "Each dot is one comparison of prints from two different people. At the study's 0.1% false positive rate, about 1 in 1,000 was wrongly called a match." },
+    on: { button: 'Remove the second examiner',
+          label: '1,000 comparisons of prints from different people; the one wrong match is caught by a second examiner',
+          caption: 'A second examiner, working on their own, caught the wrong match. In the study, independent examination by a different examiner caught every false positive and most false negatives.' }
+  };
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      var on = toggle.getAttribute('aria-pressed') !== 'true';
+      var c = on ? copy.on : copy.off;
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      toggle.textContent = c.button;
+      dots.setAttribute('data-second', on ? 'true' : 'false');
+      dots.setAttribute('aria-label', c.label);
+      caption.textContent = c.caption;
+    });
+  }
+
+  // Field rows: open one at a time.
+  var frows = Array.prototype.slice.call(document.querySelectorAll('.frow-btn'));
+  frows.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var opening = btn.getAttribute('aria-expanded') !== 'true';
+      frows.forEach(function (b) {
+        var open = opening && b === btn;
+        b.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.getElementById(b.getAttribute('aria-controls')).hidden = !open;
+      });
+    });
   });
 })();
 </script>
