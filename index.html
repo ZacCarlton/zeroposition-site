@@ -73,15 +73,46 @@ summary::-webkit-details-marker{display:none}
 .st-active{display:inline-flex;align-items:center;padding:4px 10px;background:#E3E8EE;font-size:15px;line-height:1.35;font-weight:600;color:#12161C}
 .st-done{display:flex;align-items:center;gap:8px;font-size:15px;line-height:1.35;font-weight:600;color:#1B3B6F}
 .mono-label{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
-.lv{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:72px;box-sizing:border-box;padding:10px 12px;border:1px solid #D3D9E0;background:#F8F9FB;color:#12161C;font-family:inherit;text-align:left;cursor:pointer}
-.lv:hover{border-color:#1B3B6F}
-.lv-num{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;font-weight:600;color:#1B3B6F}
+.case-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:8px}
+.case-tab{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:64px;box-sizing:border-box;padding:12px 16px;border:1px solid #D3D9E0;background:#F8F9FB;color:#12161C;font-family:inherit;text-align:left;cursor:pointer}
+.case-tab:hover{border-color:#1B3B6F}
+.case-tab-k{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#1B3B6F}
+.case-tab-t{font-size:15px;line-height:1.3;font-weight:600}
+.case-tab[aria-selected="true"]{background:#1B3B6F;border-color:#1B3B6F;color:#FFFFFF}
+.case-tab[aria-selected="true"] .case-tab-k{color:#FFFFFF}
+.scale{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(112px,100%),1fr));gap:6px}
+.lv{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:72px;box-sizing:border-box;padding:10px 12px;border:1px solid #D3D9E0;background:#F8F9FB;color:#56606C}
+.lv-num{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;font-weight:600;color:#8D98A6}
 .lv-label{font-size:14px;line-height:1.3;font-weight:600}
-.lv[aria-pressed="true"]{border:2px solid #1B3B6F;background:#1B3B6F;color:#FFFFFF}
-.lv[aria-pressed="true"] .lv-num{color:#FFFFFF}
-.dots i{display:block;aspect-ratio:1;border-radius:50%;background:#3A5078}
-.dots i.fp{background:#F08A3C;box-shadow:0 0 0 3px rgba(240,138,60,0.35)}
-.dots[data-second="true"] i.fp{background:#FFFFFF;box-shadow:0 0 0 3px #7FB0FF}
+.lv[data-on="true"]{border-color:#1B3B6F;background:#1B3B6F;color:#FFFFFF;box-shadow:0 0 0 1px #1B3B6F}
+.lv[data-on="true"] .lv-num{color:#FFFFFF}
+.f2-box{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid #D3D9E0;font-size:22px;font-weight:600;color:#12161C}
+.f2-box[data-found="true"]{border:1.5px solid #9C4600;background:#FBEEE2;color:#7A3600}
+.btn-light{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border:1px solid #FFFFFF;background:#FFFFFF;color:#0E1F3B;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.btn-ghost{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid #7C8FAE;background:transparent;color:#FFFFFF;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.btn-light:focus-visible,.btn-ghost:focus-visible{outline:2px solid #FFFFFF;outline-offset:3px}
+.cmp-side{min-width:0;display:flex;flex-direction:column;gap:12px;padding:18px;background:#13284C}
+.cmp-head{display:flex;flex-direction:column;gap:2px}
+.cmp-title{font-size:17px;font-weight:700;color:#FFFFFF}
+.cmp-sub{font-size:13px;line-height:1.4;color:#BCCBE0}
+.cmp-wrap{position:relative}
+.cmp-grid{display:grid;grid-template-columns:repeat(50,minmax(0,1fr));gap:2px}
+.cmp-grid i{display:block;aspect-ratio:1;border-radius:50%;background:#3A5078;opacity:0.3;transition:opacity .5s,background-color .4s,box-shadow .4s}
+.cmp:not([data-step="0"]) .cmp-grid i{opacity:1}
+.cmp[data-step="2"] #grid-fp i.fp{background:#F08A3C;box-shadow:0 0 0 3px rgba(240,138,60,0.45)}
+.cmp[data-step="3"] #grid-fp i.fp{background:#FFFFFF;box-shadow:0 0 0 3px #7FB0FF}
+.cmp:not([data-step="0"]) .cmp-grid-ai i{background:#2B3F62}
+.cmp-none{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:12px}
+.cmp-none span{padding:10px 14px;background:#0E1F3B;border:1px dashed #BCCBE0;color:#FFFFFF;font-size:15px;font-weight:700;text-align:center}
+.cmp[data-step="2"] .cmp-none,.cmp[data-step="3"] .cmp-none{display:flex}
+.cmp-stats{margin:0;display:flex;flex-direction:column;gap:0;border-top:1px solid #3A5078}
+.cmp-stats div{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 12px;padding:9px 0;border-bottom:1px solid #2B3F62}
+.cmp-stats dt{font-size:14px;color:#D5DEEA}
+.cmp-stats dd{margin:0;font-size:14px;font-weight:700;color:#FFFFFF}
+.chip-yes{display:inline-flex;padding:2px 8px;background:#FFFFFF;color:#0E1F3B;font-size:12px;font-weight:700}
+.chip-partly{display:inline-flex;padding:1px 8px;border:1.5px solid #FFFFFF;color:#FFFFFF;font-size:12px;font-weight:700}
+.chip-nf{display:inline-flex;padding:1px 8px;border:1.5px solid #F0A060;background:#3A2412;color:#FFD9B8;font-size:12px;font-weight:700}
+@media (prefers-reduced-motion:reduce){.cmp-grid i{transition:none}}
 .frow-btn,.fdetail{background:#FFFFFF}
 .frow-btn:hover{background:#F8F9FB}
 .frow-btn[aria-expanded="true"],.frow-btn[aria-expanded="true"]+.fdetail{background:#F8F9FB}
@@ -89,7 +120,7 @@ summary::-webkit-details-marker{display:none}
 .fsign{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:16px;color:#1B3B6F;width:10px}
 .fsign::before{content:"+"}
 .frow-btn[aria-expanded="true"] .fsign::before{content:"\2212"}
-@media (max-width:600px){.dots{gap:2px!important;padding:10px!important}}
+@media (max-width:600px){.cmp-grid{gap:1px}.cmp-side{padding:12px}}
 </style>
 </head>
 <body>
@@ -196,59 +227,67 @@ summary::-webkit-details-marker{display:none}
 </section>
 
 <section id="examination" style="background: #FFFFFF; border-top: 1px solid #D3D9E0">
-<div style="max-width: 1264px; margin: 0 auto; padding: 72px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+<div style="max-width: 1264px; margin: 0 auto; padding: 72px 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px">
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 20px 64px">
 <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
-<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #1B3B6F">01 · The examination</div>
-<h2 style="margin: 0; font-size: clamp(30px, 3vw, 42px); line-height: 1.15; font-weight: 700; letter-spacing: -0.015em; color: #12161C; text-wrap: balance">What you get: two findings on each claim, signed</h2>
+<div class="eyebrow">01 · The examination</div>
+<h2 class="h2">What you get: two findings on each claim, signed</h2>
 </div>
-<p style="flex: 1 1 460px; min-width: 0; margin: 0; font-size: 18px; line-height: 1.6; color: #3B4450; text-wrap: pretty">You name the claims your decision depends on: as an insurer pricing coverage, a company buying an AI product, or an investor in a deal. For each claim, the report gives two findings.</p>
+<p style="flex: 1 1 460px; min-width: 0; margin: 0; font-size: 18px; line-height: 1.6; color: #3B4450; text-wrap: pretty">You name the claims your decision depends on: as an insurer pricing coverage, a company buying an AI product, or an investor in a deal. For each claim, the report gives two findings. The first rates the vendor's evidence. The second says whether we found evidence that the claim is false.</p>
 </div>
 
-<article aria-label="Sample examination report" style="box-sizing: border-box; border: 1px solid #12161C; background: #FFFFFF; display: flex; flex-direction: column">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div class="mono-label" style="font-size: 12px; color: #56606C">Pick a sample report</div>
+<div role="tablist" aria-label="Sample reports" class="case-tabs">
+<button type="button" role="tab" class="case-tab" id="case-tab-0" data-case="0" aria-selected="true" aria-controls="exam-report"><span class="case-tab-k">Sample A</span><span class="case-tab-t">Sound evidence, short of the claim</span></button>
+<button type="button" role="tab" class="case-tab" id="case-tab-1" data-case="1" aria-selected="false" aria-controls="exam-report" tabindex="-1"><span class="case-tab-k">Sample B</span><span class="case-tab-t">Strong evidence, and evidence against it</span></button>
+<button type="button" role="tab" class="case-tab" id="case-tab-2" data-case="2" aria-selected="false" aria-controls="exam-report" tabindex="-1"><span class="case-tab-k">Sample C</span><span class="case-tab-t">No evidence given</span></button>
+</div>
+</div>
+
+<article id="exam-report" role="tabpanel" aria-labelledby="case-tab-0" aria-live="polite" style="box-sizing: border-box; border: 1px solid #12161C; background: #FFFFFF; display: flex; flex-direction: column">
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding: 14px 24px; background: #12161C; color: #FFFFFF">
-<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase">Examination report · Sample</span>
+<span class="mono-label" style="font-size: 13px; letter-spacing: 0.12em">Examination report · <span id="case-name">Sample A</span></span>
 <span style="font-size: 13px; line-height: 1.4; color: #D5DEEA">Illustration only. Not a real vendor, claim or finding.</span>
 </div>
 <div style="padding: 20px 24px; border-bottom: 1px solid #D3D9E0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px">
-<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #56606C">Claim examined</span>
-<span style="flex: 1 1 420px; min-width: 0; font-size: 20px; line-height: 1.4; font-weight: 600; color: #12161C">"Our system flags at least 9 in 10 fraudulent claims."</span>
+<span class="mono-label" style="font-size: 12px; letter-spacing: 0.1em; color: #56606C">Claim examined</span>
+<span id="case-claim" style="flex: 1 1 420px; min-width: 0; font-size: 20px; line-height: 1.4; font-weight: 600; color: #12161C">"Our system flags at least 9 in 10 fraudulent claims."</span>
 </div>
 <div style="display: flex; flex-wrap: wrap">
 <div style="flex: 3 1 520px; min-width: 0; box-sizing: border-box; padding: 24px; border-right: 1px solid #D3D9E0; display: flex; flex-direction: column; gap: 14px">
-<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #56606C">Finding 1 · What the vendor's evidence is</div>
-<div role="group" aria-label="Evidence rating" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(112px, 100%), 1fr)); gap: 6px">
-<button type="button" class="lv" data-level="0" aria-pressed="false"><span class="lv-num">1</span><span class="lv-label">Missing</span></button>
-<button type="button" class="lv" data-level="1" aria-pressed="false"><span class="lv-num">2</span><span class="lv-label">Shown to be flawed</span></button>
-<button type="button" class="lv" data-level="2" aria-pressed="false"><span class="lv-num">3</span><span class="lv-label">Not enough to judge</span></button>
-<button type="button" class="lv" data-level="3" aria-pressed="true"><span class="lv-num">4</span><span class="lv-label">Sound, but short of the claim</span></button>
-<button type="button" class="lv" data-level="4" aria-pressed="false"><span class="lv-num">5</span><span class="lv-label">Sound, and reaching it</span></button>
-</div>
-<p id="lv-desc" aria-live="polite" style="margin: 0; padding: 14px 16px; background: #F2F4F7; font-size: 16px; line-height: 1.55; color: #12161C"><strong><span id="lv-label">Sound, but short of the claim</span>.</strong> <span id="lv-text">The evidence holds up, but it supports less than the claim says.</span></p>
-<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #56606C">Click a rating to see what it means. In this sample the evidence rates 4.</p>
+<div class="mono-label" style="font-size: 12px; letter-spacing: 0.12em; color: #56606C">Finding 1 · What the vendor's evidence is</div>
+<ol class="scale" aria-label="Evidence rating, 1 to 5">
+<li class="lv" data-on="false"><span class="lv-num">1</span><span class="lv-label">Missing</span></li>
+<li class="lv" data-on="false"><span class="lv-num">2</span><span class="lv-label">Shown to be flawed</span></li>
+<li class="lv" data-on="false"><span class="lv-num">3</span><span class="lv-label">Not enough to judge</span></li>
+<li class="lv" data-on="true" aria-current="true"><span class="lv-num">4</span><span class="lv-label">Sound, but short of the claim</span></li>
+<li class="lv" data-on="false"><span class="lv-num">5</span><span class="lv-label">Sound, and reaching it</span></li>
+</ol>
+<p style="margin: 0; padding: 14px 16px; background: #F2F4F7; font-size: 16px; line-height: 1.55; color: #12161C"><strong>Rated <span id="lv-num">4</span>: <span id="lv-label">Sound, but short of the claim</span>.</strong> <span id="lv-text">The evidence holds up, but it supports less than the claim says.</span></p>
+<p id="f1-note" style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">In this sample: the vendor's test holds up, but it only used auto claims. The claim covers every kind of claim.</p>
 </div>
 <div style="flex: 2 1 340px; min-width: 0; box-sizing: border-box; padding: 24px; display: flex; flex-direction: column; gap: 14px">
-<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #56606C">Finding 2 · Evidence the claim is false</div>
-<div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid #D3D9E0">
-<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 22px; font-weight: 600; color: #12161C">None found</span>
-</div>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">We look for sound evidence inside the claim's scope that shows the claim is false. Finding none isn't a pass.</p>
+<div class="mono-label" style="font-size: 12px; letter-spacing: 0.12em; color: #56606C">Finding 2 · Evidence the claim is false</div>
+<div id="f2-box" class="f2-box" data-found="false"><span id="f2-result" class="mono">None found</span></div>
+<p id="f2-note" style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">Nothing inside the claim's scope shows it's false. That still isn't a pass: the vendor's evidence only reaches auto claims.</p>
+<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #56606C">We look for sound evidence inside the claim's scope that shows the claim is false. Finding none isn't a pass.</p>
 </div>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 16px 40px; padding: 18px 24px; border-top: 1px solid #D3D9E0; background: #F8F9FB">
-<span style="display: flex; flex-direction: column; gap: 4px; min-width: 200px"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #56606C">Examiner</span><span style="font-size: 15px; color: #12161C; border-bottom: 1px solid #12161C; padding-bottom: 4px; min-width: 200px">Signed</span></span>
-<span style="display: flex; flex-direction: column; gap: 4px; min-width: 200px"><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #56606C">Second reviewer</span><span style="font-size: 15px; color: #12161C; border-bottom: 1px solid #12161C; padding-bottom: 4px; min-width: 200px">Released</span></span>
+<span style="display: flex; flex-direction: column; gap: 4px; min-width: 200px"><span class="mono-label" style="font-size: 12px; letter-spacing: 0.1em; color: #56606C">Examiner</span><span style="font-size: 15px; color: #12161C; border-bottom: 1px solid #12161C; padding-bottom: 4px; min-width: 200px">Signed</span></span>
+<span style="display: flex; flex-direction: column; gap: 4px; min-width: 200px"><span class="mono-label" style="font-size: 12px; letter-spacing: 0.1em; color: #56606C">Second reviewer</span><span style="font-size: 15px; color: #12161C; border-bottom: 1px solid #12161C; padding-bottom: 4px; min-width: 200px">Released</span></span>
 <span style="flex: 1 1 280px; align-self: flex-end; font-size: 13px; line-height: 1.5; color: #56606C">No score, grade, tier or certification. A written finding on the evidence, for the scope you named.</span>
 </div>
 </article>
 
 <div style="display: flex; flex-direction: column; border-top: 1px solid #D3D9E0">
 <details style="border-bottom: 1px solid #D3D9E0">
-<summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 0 4px; cursor: pointer; font-size: 18px; font-weight: 700; color: #12161C">What it doesn't do<span aria-hidden="true" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 20px; color: #1B3B6F">+</span></summary>
+<summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 0 4px; cursor: pointer; font-size: 18px; font-weight: 700; color: #12161C">What it doesn't do<span aria-hidden="true" class="mono" style="font-size: 20px; color: #1B3B6F">+</span></summary>
 <p style="margin: 0; padding: 0 4px 20px; max-width: 60em; font-size: 16px; line-height: 1.6; color: #3B4450">It doesn't test the product. It doesn't say whether the product works, is safe, is good, or will perform once it's deployed. There's no score, grade, tier or certification. It says nothing about claims you didn't name, beyond listing them. The examiner doesn't fix anything.</p>
 </details>
 <details style="border-bottom: 1px solid #D3D9E0">
-<summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 0 4px; cursor: pointer; font-size: 18px; font-weight: 700; color: #12161C">What it can't tell you<span aria-hidden="true" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 20px; color: #1B3B6F">+</span></summary>
+<summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 0 4px; cursor: pointer; font-size: 18px; font-weight: 700; color: #12161C">What it can't tell you<span aria-hidden="true" class="mono" style="font-size: 20px; color: #1B3B6F">+</span></summary>
 <ul style="margin: 0; padding: 0 4px 20px 22px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; line-height: 1.6; color: #3B4450">
 <li>It can't confirm the records are real beyond checking them for consistency.</li>
 <li>It can't confirm the version tested is the one you'd receive.</li>
@@ -256,7 +295,7 @@ summary::-webkit-details-marker{display:none}
 </ul>
 </details>
 <details style="border-bottom: 1px solid #D3D9E0">
-<summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 0 4px; cursor: pointer; font-size: 18px; font-weight: 700; color: #12161C">What you bring<span aria-hidden="true" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 20px; color: #1B3B6F">+</span></summary>
+<summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 0 4px; cursor: pointer; font-size: 18px; font-weight: 700; color: #12161C">What you bring<span aria-hidden="true" class="mono" style="font-size: 20px; color: #1B3B6F">+</span></summary>
 <p style="margin: 0; padding: 0 4px 20px; max-width: 60em; font-size: 16px; line-height: 1.6; color: #3B4450">The claims you rely on, and the vendor's evidence for each, through you and under your NDA. The examiner needs no source code, running copy of the product, or credentials. If a check needs one of those, the report says unknown and names what it needs.</p>
 </details>
 </div>
@@ -349,35 +388,61 @@ summary::-webkit-details-marker{display:none}
 <p style="flex: 1 1 460px; min-width: 0; margin: 0; font-size: 18px; line-height: 1.6; color: #3B4450; text-wrap: pretty">In these fields, the company being checked doesn't write the standard by itself or decide who's qualified to check against it. Forensic science went a step further: it measured how often its own examiners get it wrong.</p>
 </div>
 
-<div style="box-sizing: border-box; background: #0E1F3B; padding: 40px; display: flex; flex-wrap: wrap; gap: 32px 56px">
-<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #BCCBE0">The lead example · fingerprints</div>
+<div style="box-sizing: border-box; background: #0E1F3B; padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 56px">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div class="eyebrow" style="color: #BCCBE0">The lead example · fingerprints</div>
 <h3 style="margin: 0; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; color: #FFFFFF; text-wrap: balance">A measured error rate, and a second examiner who catches it</h3>
 <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #D5DEEA">In 2011 the FBI and Noblis tested 169 experienced examiners on prints where the right answer was known, and published how often they were wrong.</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #D5DEEA">In 2016 the President's Council of Advisors on Science and Technology found fingerprint analysis to be a valid method, called its false positive rate substantial, and said juries should be told about it.</p>
+<p style="margin: 0; font-size: 13px; line-height: 1.6; color: #BCCBE0">Sources: <a href="https://doi.org/10.1073/pnas.1018707108" style="color: #FFFFFF">Ulery, Hicklin, Buscaglia and Roberts, PNAS, 2011</a> · <a href="https://obamawhitehouse.archives.gov/sites/default/files/microsites/ostp/PCAST/pcast_forensic_science_report_final.pdf" style="color: #FFFFFF">PCAST, 2016</a></p>
+</div>
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 16px; padding: 16px 0; border-top: 1px solid #3A5078; border-bottom: 1px solid #3A5078">
 <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 40px; line-height: 1; font-weight: 800; letter-spacing: -0.02em; color: #FFFFFF">0.1%</span><span style="font-size: 14px; line-height: 1.45; color: #D5DEEA">false positives: a match called between prints from different people</span></div>
 <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 40px; line-height: 1; font-weight: 800; letter-spacing: -0.02em; color: #FFFFFF">7.5%</span><span style="font-size: 14px; line-height: 1.45; color: #D5DEEA">false negatives: a real match missed</span></div>
 </div>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #D5DEEA">In 2016 the President's Council of Advisors on Science and Technology found fingerprint analysis to be a valid method, called its false positive rate substantial, and said juries should be told about it.</p>
-<div style="display: inline-flex; align-self: flex-start; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; line-height: 1.3; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 10px; border: 1px dashed #BCCBE0; color: #E6ECF4">Inferred · my comparison</div>
+<div class="stamp stamp-inf" style="border-color: #BCCBE0; color: #E6ECF4">Inferred · my comparison</div>
 <p style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 600; color: #FFFFFF">That's what I want for AI claims: a written method, evidence against the claim, a known error rate, and a second examiner who can catch the first.</p>
-<p style="margin: 0; font-size: 13px; line-height: 1.6; color: #BCCBE0">Sources: <a href="https://doi.org/10.1073/pnas.1018707108" style="color: #FFFFFF">Ulery, Hicklin, Buscaglia and Roberts, PNAS, 2011</a> · <a href="https://obamawhitehouse.archives.gov/sites/default/files/microsites/ostp/PCAST/pcast_forensic_science_report_final.pdf" style="color: #FFFFFF">PCAST, 2016</a></p>
+</div>
 </div>
 
-<figure style="flex: 1 1 460px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px">
-<span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #BCCBE0">1,000 comparisons, different people</span>
-<button type="button" id="second-toggle" aria-pressed="false" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid #FFFFFF; background: #FFFFFF; color: #0E1F3B; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer">Add a second examiner</button>
+<figure id="cmp" class="cmp" data-step="0" style="margin: 0; display: flex; flex-direction: column; gap: 16px; padding-top: 28px; border-top: 1px solid #3A5078">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="mono-label" style="font-size: 12px; letter-spacing: 0.1em; color: #BCCBE0">Side by side</span>
+<span style="font-size: 20px; line-height: 1.3; font-weight: 700; color: #FFFFFF">1,000 decisions in each field. What can you see?</span>
 </div>
-<div id="dots" class="dots" data-second="false" role="img" aria-label="1,000 comparisons of prints from different people; one was wrongly called a match" style="display: grid; grid-template-columns: repeat(40, minmax(0, 1fr)); gap: 3px; padding: 14px; background: #13284C">
-<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="fp"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" id="cmp-run" class="btn-light"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14"><path d="M3 1.5 L12 7 L3 12.5 Z" fill="#0E1F3B"></path></svg><span id="cmp-run-label">Run 1,000 decisions</span></button>
+<button type="button" id="cmp-reset" class="btn-ghost">Reset</button>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; line-height: 1.4; color: #D5DEEA">
-<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #3A5078; border: 1px solid #7C8FAE"></span>Correct: not a match</span>
-<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #F08A3C"></span>Called a match, wrongly</span>
-<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0 0 2px #7FB0FF"></span>Caught by a second examiner</span>
 </div>
-<figcaption id="dots-caption" aria-live="polite" style="font-size: 15px; line-height: 1.55; color: #FFFFFF">Each dot is one comparison of prints from two different people. At the study's 0.1% false positive rate, about 1 in 1,000 was wrongly called a match.</figcaption>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div class="cmp-side" style="flex: 1 1 420px">
+<div class="cmp-head"><span class="cmp-title">Fingerprint examiners</span><span class="cmp-sub">1,000 comparisons of prints from two different people</span></div>
+<div id="grid-fp" class="cmp-grid" role="img" aria-label="1,000 fingerprint comparisons; after the run, one wrong match is shown and then caught by a second examiner"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="fp"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<dl class="cmp-stats">
+<div><dt>Wrong matches you can see</dt><dd id="fp-found">Press run</dd></div>
+<div><dt>Caught by a second examiner</dt><dd id="fp-caught">Press run</dd></div>
+<div><dt>Error rate measured and published</dt><dd><span class="chip-yes">Yes</span> 0.1%, 2011 study</dd></div>
+</dl>
+</div>
+<div class="cmp-side" style="flex: 1 1 420px">
+<div class="cmp-head"><span class="cmp-title">AI products, today</span><span class="cmp-sub">1,000 answers from an AI product</span></div>
+<div class="cmp-wrap">
+<div id="grid-ai" class="cmp-grid cmp-grid-ai" role="img" aria-label="1,000 AI answers; after the run, the wrong ones can't be shown because no published count was found"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="cmp-none" aria-hidden="true"><span>No published count found</span></div>
+</div>
+<dl class="cmp-stats">
+<div><dt>Wrong answers you can see</dt><dd id="ai-found">Press run</dd></div>
+<div><dt>Someone checks the checker</dt><dd><span class="chip-partly">Partly</span></dd></div>
+<div><dt>Error rate measured and published</dt><dd><span class="chip-nf">Not found</span></dd></div>
+</dl>
+</div>
+</div>
+<figcaption id="cmp-caption" aria-live="polite" style="font-size: 15px; line-height: 1.55; color: #FFFFFF; max-width: 62em">Press run. On the left, each dot is one comparison of prints from two different people. On the right, each dot is one answer from an AI product.</figcaption>
 </figure>
 </div>
 
@@ -634,7 +699,7 @@ summary::-webkit-details-marker{display:none}
 <a href="https://www.linkedin.com/in/zaccarlton/" style="font-size: 15px; font-weight: 600">linkedin.com/in/zaccarlton</a>
 </div>
 <div style="box-sizing: border-box; border: 1px solid #D3D9E0; padding: 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0">
-<div aria-hidden="true" style="width: 72px; height: 72px; box-sizing: border-box; background: #E3E8EE; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; letter-spacing: 0.02em; color: #1B3B6F">MF</div>
+<img src="img/marcus-fisher.webp" width="72" height="72" alt="Photo of Marcus Fisher" style="display: block; width: 72px; height: 72px; object-fit: cover; background: #E3E8EE">
 <div style="display: flex; flex-direction: column; gap: 4px"><strong style="font-size: 19px; line-height: 1.3; color: #12161C">Marcus Fisher</strong><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #1B3B6F">Technical co-founder</span></div>
 <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">Nearly 30 years at NASA, where his roles have included Senior Technical Fellow, Associate Director and Chief Engineer of the Independent Verification and Validation Program. Author of Software Verification and Validation: An Engineering and Scientific Approach (Springer). Built the second list of checks, apart from Zac's.</p>
 </div>
@@ -736,39 +801,86 @@ summary::-webkit-details-marker{display:none}
     render();
   }
 
-  // Evidence rating: pick a level to read what it means.
+  // Sample reports: each sample sets both findings.
   var levelText = ["The vendor gave no evidence for this claim.", "The evidence has a defect that breaks it.", "There isn't enough evidence to decide either way.", "The evidence holds up, but it supports less than the claim says.", "The evidence holds up and supports the whole claim."];
   var levelName = ["Missing", "Shown to be flawed", "Not enough to judge", "Sound, but short of the claim", "Sound, and reaching it"];
-  var lvButtons = Array.prototype.slice.call(document.querySelectorAll('.lv'));
-  lvButtons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var n = +btn.getAttribute('data-level');
-      lvButtons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
-      document.getElementById('lv-label').textContent = levelName[n];
-      document.getElementById('lv-text').textContent = levelText[n];
+  var cases = [{"name": "Sample A", "claim": "\"Our system flags at least 9 in 10 fraudulent claims.\"", "level": 3, "f1": "In this sample: the vendor's test holds up, but it only used auto claims. The claim covers every kind of claim.", "found": false, "f2": "Nothing inside the claim's scope shows it's false. That still isn't a pass: the vendor's evidence only reaches auto claims."}, {"name": "Sample B", "claim": "\"Our system reads scanned invoices with 99% accuracy.\"", "level": 4, "f1": "In this sample: the vendor's test holds up and covers every kind of invoice the claim names.", "found": true, "f2": "The vendor's own release notes for the current version report 94% on handwritten invoices, which the claim covers. The 99% test was run on an earlier version."}, {"name": "Sample C", "claim": "\"Our assistant never gives medication dosing advice.\"", "level": 0, "f1": "In this sample: the vendor described its filters but gave no test results for this claim.", "found": false, "f2": "Nothing found shows the claim is false, and nothing shows it's true. None found isn't a pass."}];
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.case-tab'));
+  var lvs = Array.prototype.slice.call(document.querySelectorAll('.scale .lv'));
+  function showCase(n, focus) {
+    var c = cases[n];
+    tabs.forEach(function (t, i) {
+      t.setAttribute('aria-selected', i === n ? 'true' : 'false');
+      t.setAttribute('tabindex', i === n ? '0' : '-1');
+    });
+    if (focus) tabs[n].focus();
+    document.getElementById('exam-report').setAttribute('aria-labelledby', tabs[n].id);
+    document.getElementById('case-name').textContent = c.name;
+    document.getElementById('case-claim').textContent = c.claim;
+    lvs.forEach(function (li, i) {
+      li.setAttribute('data-on', i === c.level ? 'true' : 'false');
+      if (i === c.level) li.setAttribute('aria-current', 'true'); else li.removeAttribute('aria-current');
+    });
+    document.getElementById('lv-num').textContent = String(c.level + 1);
+    document.getElementById('lv-label').textContent = levelName[c.level];
+    document.getElementById('lv-text').textContent = levelText[c.level];
+    document.getElementById('f1-note').textContent = c.f1;
+    document.getElementById('f2-box').setAttribute('data-found', c.found ? 'true' : 'false');
+    document.getElementById('f2-result').textContent = c.found ? 'Found' : 'None found';
+    document.getElementById('f2-note').textContent = c.f2;
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { showCase(i, false); });
+    t.addEventListener('keydown', function (e) {
+      var k = e.key, n = null;
+      if (k === 'ArrowRight' || k === 'ArrowDown') n = (i + 1) % tabs.length;
+      if (k === 'ArrowLeft' || k === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
+      if (k === 'Home') n = 0;
+      if (k === 'End') n = tabs.length - 1;
+      if (n !== null) { e.preventDefault(); showCase(n, true); }
     });
   });
 
-  // Fingerprints: add or remove the second examiner.
-  var toggle = document.getElementById('second-toggle');
-  var dots = document.getElementById('dots');
-  var caption = document.getElementById('dots-caption');
-  var copy = {
-    off: { button: 'Add a second examiner', label: "1,000 comparisons of prints from different people; one was wrongly called a match", caption: "Each dot is one comparison of prints from two different people. At the study's 0.1% false positive rate, about 1 in 1,000 was wrongly called a match." },
-    on: { button: 'Remove the second examiner',
-          label: '1,000 comparisons of prints from different people; the one wrong match is caught by a second examiner',
-          caption: 'A second examiner, working on their own, caught the wrong match. In the study, independent examination by a different examiner caught every false positive and most false negatives.' }
+  // Fingerprints beside AI: run 1,000 decisions on each side.
+  var cmp = document.getElementById('cmp');
+  var cmpRun = document.getElementById('cmp-run');
+  var cmpRunLabel = document.getElementById('cmp-run-label');
+  var cmpReset = document.getElementById('cmp-reset');
+  var cmpCaption = document.getElementById('cmp-caption');
+  var cmpTimers = [];
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cmpText = {
+    0: { fpFound: 'Press run', fpCaught: 'Press run', aiFound: 'Press run', label: 'Run 1,000 decisions',
+         caption: 'Press run. On the left, each dot is one comparison of prints from two different people. On the right, each dot is one answer from an AI product.' },
+    1: { fpFound: 'Counting', fpCaught: 'Waiting', aiFound: 'Counting', label: 'Running',
+         caption: 'Both fields make 1,000 decisions.' },
+    2: { fpFound: '1 in 1,000', fpCaught: 'Checking', aiFound: 'No published count found', label: 'Running',
+         caption: "Fingerprints: at the study's 0.1% false positive rate, about 1 in 1,000 comparisons was wrongly called a match, and you can point to it. AI products: I looked for a published error rate and didn't find one, so there is nothing to point to." },
+    3: { fpFound: '1 in 1,000', fpCaught: 'Yes, caught', aiFound: 'No published count found', label: 'Run it again',
+         caption: "A second examiner, working on their own, caught the wrong match. In the study, independent examination by a different examiner caught every false positive and most false negatives. For AI products, I looked for a published error rate and didn't find one." }
   };
-  if (toggle) {
-    toggle.addEventListener('click', function () {
-      var on = toggle.getAttribute('aria-pressed') !== 'true';
-      var c = on ? copy.on : copy.off;
-      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
-      toggle.textContent = c.button;
-      dots.setAttribute('data-second', on ? 'true' : 'false');
-      dots.setAttribute('aria-label', c.label);
-      caption.textContent = c.caption;
+  function cmpSet(step) {
+    var t = cmpText[step];
+    cmp.setAttribute('data-step', String(step));
+    document.getElementById('fp-found').textContent = t.fpFound;
+    document.getElementById('fp-caught').textContent = t.fpCaught;
+    document.getElementById('ai-found').textContent = t.aiFound;
+    cmpRunLabel.textContent = t.label;
+    cmpRun.setAttribute('aria-disabled', step === 1 || step === 2 ? 'true' : 'false');
+    cmpCaption.textContent = t.caption;
+  }
+  function cmpStop() { cmpTimers.forEach(clearTimeout); cmpTimers = []; }
+  if (cmp) {
+    cmpRun.addEventListener('click', function () {
+      var s = +cmp.getAttribute('data-step');
+      if (s === 1 || s === 2) return;
+      cmpStop();
+      if (reduce) { cmpSet(3); return; }
+      cmpSet(1);
+      cmpTimers.push(setTimeout(function () { cmpSet(2); }, 900));
+      cmpTimers.push(setTimeout(function () { cmpSet(3); }, 3200));
     });
+    cmpReset.addEventListener('click', function () { cmpStop(); cmpSet(0); });
   }
 
   // Field rows: open one at a time.
