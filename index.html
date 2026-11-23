@@ -77,13 +77,13 @@ summary::-webkit-details-marker{display:none}
 .tr-steps li::before{content:attr(data-n);font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:13px;color:#56606C}
 .tr-what{font-size:15px;line-height:1.4;color:#12161C}
 .tr-what small{display:block;margin-top:2px;font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;line-height:1.45;color:#56606C}
-.tr-val{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:16px;font-weight:600;text-align:right;white-space:nowrap;color:#12161C}
-.tr-pass{color:#1B3B6F}
+.tr-val{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:16px;font-weight:600;text-align:right;white-space:nowrap;color:#157F3B}
+.tr-pass{color:#157F3B}
 .tr-steps li.is-wait{opacity:.4}
 .tr-steps li.is-wait .tr-val{visibility:hidden}
 .tr-steps li.is-new{background:#F2F4F7}
-.tr-verdict{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:16px;background:#FBEEE2;border:1.5px solid #9C4600}
-.tr-fail{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:32px;line-height:1;font-weight:600;letter-spacing:0.04em;color:#9C4600}
+.tr-verdict{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:16px;background:#FDECEA;border:1.5px solid #B42318}
+.tr-fail{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:32px;line-height:1;font-weight:600;letter-spacing:0.04em;color:#B42318}
 .tr-verdict span+span{flex:1 1 240px;font-size:15px;line-height:1.5;color:#12161C}
 .tr-after{display:flex;flex-direction:column;gap:12px}
 .tr-controls{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
@@ -98,7 +98,7 @@ summary::-webkit-details-marker{display:none}
 .tr-table thead th{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#56606C;border-bottom:2px solid #12161C}
 .tr-table tbody th{font-weight:500;color:#12161C}
 .tr-table td{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-weight:600;color:#12161C;white-space:nowrap}
-.tr-table td.tr-bad{color:#9C4600}
+.tr-table td.tr-bad{color:#B42318}
 .visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @media (max-width:600px){.tr{padding:20px}.tr-spec>div,.tr-controls li{grid-template-columns:minmax(0,1fr)}.tr-table{min-width:0}.tr-table thead{display:none}.tr-table,.tr-table tbody,.tr-table tr,.tr-table th,.tr-table td{display:block}.tr-table tr{padding:10px 0;border-bottom:1px solid #E3E8EE}.tr-table th,.tr-table td{padding:2px 0;border:0;white-space:normal}.tr-table td{display:flex;justify-content:space-between;gap:12px}.tr-table td::before{content:attr(data-label);font-family:'Public Sans',Arial,sans-serif;font-weight:400;color:#56606C}}
 .mono-label{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
@@ -113,7 +113,8 @@ summary::-webkit-details-marker{display:none}
 .lv{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:72px;box-sizing:border-box;padding:10px 12px;border:1px solid #D3D9E0;background:#F8F9FB;color:#56606C}
 .lv-num{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;font-weight:600;color:#8D98A6}
 .lv-label{font-size:14px;line-height:1.3;font-weight:600}
-.lv[data-on="true"]{border-color:#1B3B6F;background:#1B3B6F;color:#FFFFFF;box-shadow:0 0 0 1px #1B3B6F}
+.lv[data-on="true"]{border-color:#B42318;background:#B42318;color:#FFFFFF;box-shadow:0 0 0 1px #B42318}
+.lv:last-child[data-on="true"]{border-color:#157F3B;background:#157F3B;box-shadow:0 0 0 1px #157F3B}
 .lv[data-on="true"] .lv-num{color:#FFFFFF}
 .f2-box{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid #D3D9E0;font-size:22px;font-weight:600;color:#12161C}
 .f2-box[data-found="true"]{border:1.5px solid #9C4600;background:#FBEEE2;color:#7A3600}
@@ -273,9 +274,9 @@ summary::-webkit-details-marker{display:none}
 <table class="tr-table">
 <thead><tr><th scope="col">Result</th><th scope="col">AI model</th><th scope="col">Rule-based, no AI</th></tr></thead>
 <tbody>
-<tr><th scope="row">Commands passed</th><td class="tr-bad" data-label="AI model">0 of 176</td><td data-label="Rule-based, no AI">78 of 176</td></tr>
+<tr><th scope="row">Commands passed</th><td class="tr-bad" data-label="AI model">0 of 176</td><td class="tr-bad" data-label="Rule-based, no AI">78 of 176</td></tr>
 <tr><th scope="row">Proposals my system rejected during execution</th><td data-label="AI model">173 of 176</td><td data-label="Rule-based, no AI">Does not apply</td></tr>
-<tr><th scope="row">Accepted by my system, then failed scoring</th><td data-label="AI model">3</td><td data-label="Rule-based, no AI">Does not apply</td></tr>
+<tr><th scope="row">Accepted by my system, then failed scoring</th><td class="tr-bad" data-label="AI model">3</td><td data-label="Rule-based, no AI">Does not apply</td></tr>
 <tr><th scope="row">API errors</th><td data-label="AI model">0 in 176 calls</td><td data-label="Rule-based, no AI">No AI calls</td></tr>
 </tbody>
 </table>
@@ -330,10 +331,10 @@ summary::-webkit-details-marker{display:none}
 <p id="f1-note" style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">In this sample: the vendor's test holds up, but it only used auto claims. The claim covers every kind of claim.</p>
 </div>
 <div style="flex: 2 1 340px; min-width: 0; box-sizing: border-box; padding: 24px; display: flex; flex-direction: column; gap: 14px">
-<div class="mono-label" style="font-size: 12px; letter-spacing: 0.12em; color: #56606C">Finding 2 · Evidence the claim is false</div>
+<div class="mono-label" style="font-size: 12px; letter-spacing: 0.12em; color: #56606C">Finding 2 · Does any evidence show the claim is false?</div>
 <div id="f2-box" class="f2-box" data-found="false"><span id="f2-result" class="mono">None found</span></div>
 <p id="f2-note" style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4450">Nothing inside the claim's scope shows it's false. That still isn't a pass: the vendor's evidence only reaches auto claims.</p>
-<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #56606C">We look for sound evidence inside the claim's scope that shows the claim is false. Finding none isn't a pass.</p>
+<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #56606C">We look for sound evidence, inside the claim's scope, that the claim is false. Finding none isn't a pass.</p>
 </div>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 16px 40px; padding: 18px 24px; border-top: 1px solid #D3D9E0; background: #F8F9FB">
@@ -893,7 +894,7 @@ summary::-webkit-details-marker{display:none}
     document.getElementById('lv-text').textContent = levelText[c.level];
     document.getElementById('f1-note').textContent = c.f1;
     document.getElementById('f2-box').setAttribute('data-found', c.found ? 'true' : 'false');
-    document.getElementById('f2-result').textContent = c.found ? 'Found' : 'None found';
+    document.getElementById('f2-result').textContent = c.found ? 'Yes' : 'None found';
     document.getElementById('f2-note').textContent = c.f2;
   }
   tabs.forEach(function (t, i) {
