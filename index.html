@@ -63,17 +63,44 @@ summary::-webkit-details-marker{display:none}
 .stamp{display:inline-flex;align-self:flex-start;margin-top:8px;font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;font-weight:600;line-height:1.3;letter-spacing:0.08em;text-transform:uppercase;padding:5px 10px;border:1px solid #12161C;color:#12161C}
 .stamp-inf{margin-top:0;border:1px dashed #56606C;color:#3B4450}
 .panel{box-sizing:border-box;background:#FFFFFF;border:1px solid #D3D9E0}
-.demo-grid{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:8px;align-items:center}
-.demo-head{padding-bottom:6px;font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#56606C}
-.demo-item{box-sizing:border-box;border:1px solid #D3D9E0;background:#F8F9FB;padding:9px 12px;font-size:15px;line-height:1.35;color:#12161C}
-.demo-off{border:1.5px solid #9C4600;background:#FBEEE2;font-weight:600;color:#7A3600}
-.demo-id{display:block;margin-top:3px;font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:11px;font-weight:500;letter-spacing:0.04em;color:#56606C;overflow-wrap:anywhere}
-.demo-off .demo-id{color:#9C4600}
-.demo-arrow path{fill:none;stroke:#8D98A6;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.demo-status{display:flex;align-items:center;min-height:40px}
-.st-wait{font-size:15px;line-height:1.35;color:#56606C}
-.st-active{display:inline-flex;align-items:center;padding:4px 10px;background:#E3E8EE;font-size:15px;line-height:1.35;font-weight:600;color:#12161C}
-.st-done{display:flex;align-items:center;gap:8px;font-size:15px;line-height:1.35;font-weight:600;color:#1B3B6F}
+.tr{margin:0;padding:28px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.tr-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;padding-bottom:12px;border-bottom:2px solid #12161C}
+.tr-head .mono-label{font-size:13px;color:#1B3B6F}
+.tr-id{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:13px;font-weight:600;color:#12161C}
+.tr-spec{margin:0;display:flex;flex-direction:column;gap:10px}
+.tr-spec>div{display:grid;grid-template-columns:132px minmax(0,1fr);gap:4px 16px}
+.tr-spec dt{padding-top:3px;font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#56606C}
+.tr-spec dd{margin:0;font-size:15px;line-height:1.5;color:#12161C}
+.tr-sub{padding-top:12px;border-top:1px solid #D3D9E0;font-size:12px;color:#56606C}
+.tr-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.tr-steps li{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px solid #E3E8EE;transition:opacity .2s}
+.tr-steps li::before{content:attr(data-n);font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:13px;color:#56606C}
+.tr-what{font-size:15px;line-height:1.4;color:#12161C}
+.tr-what small{display:block;margin-top:2px;font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;line-height:1.45;color:#56606C}
+.tr-val{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:16px;font-weight:600;text-align:right;white-space:nowrap;color:#12161C}
+.tr-pass{color:#1B3B6F}
+.tr-steps li.is-wait{opacity:.4}
+.tr-steps li.is-wait .tr-val{visibility:hidden}
+.tr-steps li.is-new{background:#F2F4F7}
+.tr-verdict{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:16px;background:#FBEEE2;border:1.5px solid #9C4600}
+.tr-fail{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:32px;line-height:1;font-weight:600;letter-spacing:0.04em;color:#9C4600}
+.tr-verdict span+span{flex:1 1 240px;font-size:15px;line-height:1.5;color:#12161C}
+.tr-after{display:flex;flex-direction:column;gap:12px}
+.tr-controls{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.tr-controls li{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:2px 16px;font-size:14px;line-height:1.5;color:#3B4450}
+.tr-controls li span:first-child{font-weight:600;color:#12161C}
+.tr-note{margin:0;font-size:14px;line-height:1.55;color:#3B4450}
+.tr-note strong{color:#12161C}
+.tr-rec{margin:0;font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:11.5px;line-height:1.7;color:#56606C;overflow-wrap:anywhere}
+.tr-scroll{overflow-x:auto}
+.tr-table{width:100%;min-width:480px;border-collapse:collapse;font-size:15px;line-height:1.4}
+.tr-table th,.tr-table td{padding:9px 12px 9px 0;border-bottom:1px solid #E3E8EE;text-align:left;vertical-align:baseline}
+.tr-table thead th{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#56606C;border-bottom:2px solid #12161C}
+.tr-table tbody th{font-weight:500;color:#12161C}
+.tr-table td{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-weight:600;color:#12161C;white-space:nowrap}
+.tr-table td.tr-bad{color:#9C4600}
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+@media (max-width:600px){.tr{padding:20px}.tr-spec>div,.tr-controls li{grid-template-columns:minmax(0,1fr)}.tr-table{min-width:0}.tr-table thead{display:none}.tr-table,.tr-table tbody,.tr-table tr,.tr-table th,.tr-table td{display:block}.tr-table tr{padding:10px 0;border-bottom:1px solid #E3E8EE}.tr-table th,.tr-table td{padding:2px 0;border:0;white-space:normal}.tr-table td{display:flex;justify-content:space-between;gap:12px}.tr-table td::before{content:attr(data-label);font-family:'Public Sans',Arial,sans-serif;font-weight:400;color:#56606C}}
 .mono-label{font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
 .case-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:8px}
 .case-tab{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-height:64px;box-sizing:border-box;padding:12px 16px;border:1px solid #D3D9E0;background:#F8F9FB;color:#12161C;font-family:inherit;text-align:left;cursor:pointer}
@@ -161,7 +188,7 @@ summary::-webkit-details-marker{display:none}
 <p style="margin: 0; max-width: 38em; font-size: 19px; line-height: 1.6; color: #3B4450; text-wrap: pretty">When an AI vendor says its product is safe or accurate, we examine the evidence behind that one claim, as examiners who don't work for the vendor, and sign what it does and doesn't show. Today most buyers, insurers and investors have the vendor's own test reports to go on, and a report can look convincing while testing the wrong thing.</p>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 8px">
 <a href="mailto:hello@zeropositionexam.com" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; background: #1B3B6F; color: #FFFFFF; font-size: 16px; font-weight: 600; text-decoration: none">Send us a vendor's claim</a>
-<a href="#example" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; font-weight: 600; color: #1B3B6F">Run the check yourself</a>
+<a href="#example" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; font-weight: 600; color: #1B3B6F">Replay the test</a>
 </div>
 </div>
 <aside aria-label="Where this stands" style="flex: 1 1 340px; min-width: 0; box-sizing: border-box; background: #F2F4F7; border: 1px solid #D3D9E0; border-top: 4px solid #1B3B6F; padding: 24px 28px; display: flex; flex-direction: column">
@@ -184,47 +211,79 @@ summary::-webkit-details-marker{display:none}
 
 <section id="example" style="background: #F2F4F7; border-top: 1px solid #D3D9E0">
 <div style="max-width: 1264px; margin: 0 auto; padding: 64px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 40px 56px">
-<div style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-<div class="eyebrow">The problem, in one check</div>
-<h2 class="h2">Run the check my agent ran</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3B4450; text-wrap: pretty">My agent added a rule to a test copy of my system and left it off the declared list. Then it ran the completeness check. Press the button to run it the same way.</p>
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div class="eyebrow">The problem, tested</div>
+<h2 class="h2">Replay the test my system failed</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3B4450; text-wrap: pretty">My agent planted a rule in a test copy of my system and left it off the declared list. Then it ran every check. Press the button to replay the recorded results, one step at a time.</p>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
-<button type="button" id="demo-run" class="btn-primary"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14"><path d="M3 1.5 L12 7 L3 12.5 Z" fill="#FFFFFF"></path></svg><span id="demo-run-label">Run the check</span></button>
+<button type="button" id="demo-run" class="btn-primary"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14"><path d="M3 1.5 L12 7 L3 12.5 Z" fill="#FFFFFF"></path></svg><span id="demo-run-label">Replay the test</span></button>
 <button type="button" id="demo-reset" class="btn-secondary">Reset</button>
 </div>
 <div class="stamp">Verified · my agent, my machine</div>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #56606C">This was a test copy; the protected system was not changed. The five rows are real entries from that list, which holds 278.</p>
-<noscript><p style="margin: 0; font-size: 15px; line-height: 1.6; color: #12161C">Result: PASS. Completeness check passed. Validator 14 of 14. Preflight 17 of 17. The rule was there the whole time, and it said anything left off the list must block the pass. The checks read the list to decide what to look for, and it wasn't on the list.</p></noscript>
-</div>
-
-<figure class="panel" style="flex: 1 1 540px; min-width: 0; margin: 0; padding: 24px; display: flex; flex-direction: column; gap: 8px">
-<div class="demo-grid demo-head">
-<span>On the declared list · 5 of 278</span>
-<span></span>
-<span>What the check did</span>
-</div>
-<div id="demo-rows" style="display: flex; flex-direction: column; gap: 8px">
-<div class="demo-grid demo-row"><span class="demo-item">Issue the job to the agent<span class="demo-id">OP_ISSUE_COMMISSION</span></span><svg class="demo-arrow" aria-hidden="true" width="28" height="12" viewBox="0 0 28 12"><path d="M2 6 L24 6"></path><path d="M19 2 L25 6 L19 10"></path></svg><span class="demo-status"><span class="st-wait">Waiting</span><span class="st-active" hidden>Checking</span><span class="st-done" hidden><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#1B3B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Checked</span></span></div>
-<div class="demo-grid demo-row"><span class="demo-item">Set up the workspace<span class="demo-id">OP_STAGE_WORKSPACE</span></span><svg class="demo-arrow" aria-hidden="true" width="28" height="12" viewBox="0 0 28 12"><path d="M2 6 L24 6"></path><path d="M19 2 L25 6 L19 10"></path></svg><span class="demo-status"><span class="st-wait">Waiting</span><span class="st-active" hidden>Checking</span><span class="st-done" hidden><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#1B3B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Checked</span></span></div>
-<div class="demo-grid demo-row"><span class="demo-item">Admit the work for review<span class="demo-id">OP_ADMIT_SUBJECT</span></span><svg class="demo-arrow" aria-hidden="true" width="28" height="12" viewBox="0 0 28 12"><path d="M2 6 L24 6"></path><path d="M19 2 L25 6 L19 10"></path></svg><span class="demo-status"><span class="st-wait">Waiting</span><span class="st-active" hidden>Checking</span><span class="st-done" hidden><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#1B3B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Checked</span></span></div>
-<div class="demo-grid demo-row"><span class="demo-item">Record the starting state<span class="demo-id">OP_CAPTURE_BASELINE</span></span><svg class="demo-arrow" aria-hidden="true" width="28" height="12" viewBox="0 0 28 12"><path d="M2 6 L24 6"></path><path d="M19 2 L25 6 L19 10"></path></svg><span class="demo-status"><span class="st-wait">Waiting</span><span class="st-active" hidden>Checking</span><span class="st-done" hidden><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#1B3B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Checked</span></span></div>
-<div class="demo-grid demo-row"><span class="demo-item">Work out the order of steps<span class="demo-id">OP_DERIVE_DAG</span></span><svg class="demo-arrow" aria-hidden="true" width="28" height="12" viewBox="0 0 28 12"><path d="M2 6 L24 6"></path><path d="M19 2 L25 6 L19 10"></path></svg><span class="demo-status"><span class="st-wait">Waiting</span><span class="st-active" hidden>Checking</span><span class="st-done" hidden><svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5" fill="none" stroke="#1B3B6F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Checked</span></span></div>
-</div>
-<div id="demo-offlist" class="demo-grid demo-row" style="padding-top: 6px; border-top: 1px dashed #D3D9E0" hidden>
-<span class="demo-item demo-off">Added rule: anything left off the list must block the pass<span class="demo-id">CNY-046 · never on the list</span></span>
-<svg aria-hidden="true" width="28" height="12" viewBox="0 0 28 12"><path d="M2 6 L24 6" fill="none" stroke="#9C4600" stroke-width="1.5" stroke-dasharray="3 3"></path><path d="M19 2 L25 6 L19 10" fill="none" stroke="#9C4600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span class="demo-item demo-off" style="border-style: dashed; background: #FFFFFF">Not looked for</span>
-</div>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: 10px; padding-top: 16px; border-top: 2px solid #12161C; min-height: 56px" role="status">
-<span id="demo-pending" class="mono-label" style="font-size: 14px; color: #56606C">Result: <span id="demo-status-text">not run yet</span></span>
-<span id="demo-pass" hidden style="display: contents"><span class="mono" style="font-size: 40px; line-height: 1; font-weight: 600; letter-spacing: 0.04em; color: #1B3B6F">PASS</span><span style="flex: 1 1 220px; min-width: 0; font-size: 15px; line-height: 1.5; color: #3B4450">Completeness check passed. Validator 14 of 14. Preflight 17 of 17.</span></span>
-</div>
-<div id="demo-inference" hidden style="display: flex; flex-direction: column; gap: 10px; margin-top: 8px; padding: 18px; background: #F2F4F7">
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #56606C">Nothing runs live here. These are the recorded results. The protected system was not changed.</p>
+<div id="demo-inference" style="display: flex; flex-direction: column; gap: 10px; margin-top: 8px; padding: 18px; background: #FFFFFF; border: 1px solid #D3D9E0">
 <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #12161C">The rule was there the whole time, and it said anything left off the list must block the pass. The checks read the list to decide what to look for, and it wasn't on the list.</p>
 <div class="stamp stamp-inf">Inferred · what I take from this</div>
 <p style="margin: 0; font-size: 19px; line-height: 1.45; font-weight: 600; color: #12161C">If the list defines the scope, nothing off the list gets checked, and a pass only tells you about the list.</p>
 <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #3B4450">I don't claim a stronger model fixes this, that my setup is typical, or that anyone else's product fails the same way.</p>
 </div>
+</div>
+
+<figure class="panel tr" id="tr-cny" style="flex: 1 1 600px">
+<div class="tr-head"><span class="mono-label">Test record</span><span class="tr-id">CNY-046 · Aug 24, 2026</span></div>
+<dl class="tr-spec">
+<div><dt>Objective</dt><dd>Does the completeness check catch a rule that is in the source but missing from the declared list?</dd></div>
+<div><dt>Setup</dt><dd>A test copy of my system. The declared list holds 278 entries, such as "issue the job" and "record the starting state."</dd></div>
+<div><dt>Planted fault</dt><dd>Rule CNY-046, which says anything left off the list must block the pass. Added to the source and left off the list.</dd></div>
+<div><dt>Expected</dt><dd>The completeness check and the preflight both fail, and review stays blocked.</dd></div>
+</dl>
+<div class="tr-sub mono-label">Actual</div>
+<ol class="tr-steps" id="tr-steps">
+<li data-n="1"><span class="tr-what">List entries for CNY-046</span><span class="tr-val">0</span></li>
+<li data-n="2"><span class="tr-what">References to CNY-046 found in the source</span><span class="tr-val">0</span></li>
+<li data-n="3"><span class="tr-what">Completeness check<small>4,381 references checked · dangling 0 · ambiguous 0 · conflicting 0</small></span><span class="tr-val tr-pass">PASS</span></li>
+<li data-n="4"><span class="tr-what">Validator self-test<small>14 planted faults of its own</small></span><span class="tr-val tr-pass">14 of 14</span></li>
+<li data-n="5"><span class="tr-what">Preflight checks</span><span class="tr-val tr-pass">17 of 17</span></li>
+<li data-n="6"><span class="tr-what">Review activated</span><span class="tr-val">Yes</span></li>
+</ol>
+<div id="tr-verdict" class="tr-verdict"><span class="tr-fail">FAIL</span><span>Every check passed, and none of them caught the planted rule. The record rates it critical.</span></div>
+<div id="tr-after" class="tr-after">
+<div class="tr-sub mono-label">Controls · predictions hashed before the runs</div>
+<ul class="tr-controls">
+<li><span>No change to the copy</span><span>Every stage passed, as predicted.</span></li>
+<li><span>Rule put on the list as well</span><span>The check saw it, 1 entry and 2 references, and the completeness check failed, as predicted. The later checks never ran.</span></li>
+<li><span>Clean copy, validator self-test</span><span>Accepted the clean copy and rejected all 14 of its own planted faults.</span></li>
+</ul>
+<div class="tr-sub mono-label">Limits</div>
+<p class="tr-note">One test on my own system, run by my own agents. A full run with the rule correctly listed was not shown. It does not show that anyone else's product fails the same way.</p>
+<p class="tr-rec">Test run sha256 3a330e129205efdc1b47c55e6ffbb75d75edb7ed9c26749e911bd4ea1a5aedf8<br>Controls sha256 dff57b4846f9ce34d27696208e1b1b901fbdf7303dd2644088a7f7855a008b8a<br>Control predictions sha256 b2a267308d752f87798639613c05bc8999441bdc97aa28923de998cfde932b9b</p>
+</div>
+<div id="tr-status" class="visually-hidden" role="status"></div>
+</figure>
+
+<figure class="panel tr" id="tr-bake" style="flex: 1 1 100%">
+<div class="tr-head"><span class="mono-label">Test record</span><span class="tr-id">A second test · an AI model on 176 commands</span></div>
+<dl class="tr-spec">
+<div><dt>Objective</dt><dd>Given 176 plain-language commands, does an AI model propose the right action, and does my system stop the wrong ones?</dd></div>
+<div><dt>Setup</dt><dd>128 test cases holding 176 commands, frozen before both runs. The same commands went to an AI model and to a rule-based program with no AI. The model's proposals had no authority until my system checked them.</dd></div>
+<div><dt>Pass</dt><dd>My system accepts the proposal and it scores correct on every field.</dd></div>
+</dl>
+<div class="tr-sub mono-label">Actual</div>
+<div class="tr-scroll">
+<table class="tr-table">
+<thead><tr><th scope="col">Result</th><th scope="col">AI model</th><th scope="col">Rule-based, no AI</th></tr></thead>
+<tbody>
+<tr><th scope="row">Commands passed</th><td class="tr-bad" data-label="AI model">0 of 176</td><td data-label="Rule-based, no AI">78 of 176</td></tr>
+<tr><th scope="row">Proposals my system rejected during execution</th><td data-label="AI model">173 of 176</td><td data-label="Rule-based, no AI">Does not apply</td></tr>
+<tr><th scope="row">Accepted by my system, then failed scoring</th><td data-label="AI model">3</td><td data-label="Rule-based, no AI">Does not apply</td></tr>
+<tr><th scope="row">API errors</th><td data-label="AI model">0 in 176 calls</td><td data-label="Rule-based, no AI">No AI calls</td></tr>
+</tbody>
+</table>
+</div>
+<p class="tr-note"><strong>Result:</strong> the model passed none of the 176 commands. My system rejected 173 of its proposals during execution; the other 3 got through and failed scoring. A rule-based program with no AI passed 78 of the same commands.</p>
+<div class="tr-sub mono-label">Limits</div>
+<p class="tr-note">One model setup, scored by my own system with no outside judge. The commands were visible to the builder, so this was not a hidden test. It does not measure what AI models can do in general.</p>
+<p class="tr-rec">AI model results sha256 6ca9169212542a1ca3d3a024a1f7d00cef8b7069a320c5eb446b88b2a9a54253<br>Rule-based results sha256 bee3a66dda7495a51ccc3483fdc3a9196bbee7565a78bceecd8eec109505d92c</p>
 </figure>
 </div>
 </section>
@@ -769,44 +828,43 @@ summary::-webkit-details-marker{display:none}
 </div>
 <script>
 (function () {
-  // Run the check: five listed entries are checked one at a time; the added rule is never looked for.
+  // Test record replay: recorded results shown one step at a time; nothing is computed here.
   var run = document.getElementById('demo-run');
   var runLabel = document.getElementById('demo-run-label');
   var reset = document.getElementById('demo-reset');
-  var rows = Array.prototype.slice.call(document.querySelectorAll('#demo-rows .demo-row'));
-  var offlist = document.getElementById('demo-offlist');
-  var pending = document.getElementById('demo-pending');
-  var statusText = document.getElementById('demo-status-text');
-  var pass = document.getElementById('demo-pass');
+  var steps = Array.prototype.slice.call(document.querySelectorAll('#tr-steps li'));
+  var verdict = document.getElementById('tr-verdict');
+  var after = document.getElementById('tr-after');
   var inference = document.getElementById('demo-inference');
-  var step = 0, timer = null;
+  var trStatus = document.getElementById('tr-status');
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var N = steps.length, stage = 0, timer = null;
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
   function render() {
-    rows.forEach(function (row, i) {
-      row.querySelector('.st-wait').hidden = !(step <= i);
-      row.querySelector('.st-active').hidden = !(step === i + 1);
-      row.querySelector('.st-done').hidden = !(step >= i + 2);
+    steps.forEach(function (li, i) {
+      li.classList.toggle('is-wait', stage <= i);
+      li.classList.toggle('is-new', stage === i + 1 && stage <= N);
     });
-    var revealed = step >= 7, passed = step >= 6;
-    offlist.hidden = !revealed;
-    inference.hidden = !revealed;
-    pass.hidden = !passed;
-    pending.hidden = passed;
-    statusText.textContent = step === 0 ? 'not run yet' : 'running';
-    runLabel.textContent = step === 0 ? 'Run the check' : (revealed ? 'Run it again' : 'Running');
-    run.setAttribute('aria-disabled', step > 0 && !revealed ? 'true' : 'false');
+    var done = stage >= N + 2;
+    verdict.hidden = stage < N + 1;
+    after.hidden = !done;
+    inference.hidden = !done;
+    runLabel.textContent = stage === 0 ? 'Replay the test' : (done ? 'Replay it again' : 'Replaying');
+    run.setAttribute('aria-disabled', stage > 0 && !done ? 'true' : 'false');
+    trStatus.textContent = stage === 0 ? '' : (stage >= N + 1 ? 'Verdict: FAIL. Every check passed, and none caught the planted rule.' : 'Replaying step ' + stage + ' of ' + N + '.');
   }
   if (run) {
     run.addEventListener('click', function () {
-      if (step !== 0 && step < 7) return;
+      if (stage !== 0 && stage < N + 2) return;
       stop();
-      step = 1; render();
+      if (reduceMotion) { stage = N + 2; render(); return; }
+      stage = 1; render();
       timer = setInterval(function () {
-        step += 1; render();
-        if (step >= 7) stop();
-      }, 550);
+        stage += 1; render();
+        if (stage >= N + 2) stop();
+      }, 650);
     });
-    reset.addEventListener('click', function () { stop(); step = 0; render(); });
+    reset.addEventListener('click', function () { stop(); stage = 0; render(); });
     render();
   }
 
