@@ -269,3 +269,4 @@ a.bar-row:hover .bar-l{color:#1B3B6F;text-decoration:underline}
 .sf li a{display:flex;align-items:center;min-height:36px;font-size:15px}
 .sf-base{display:flex;flex-wrap:wrap;gap:6px 24px;padding-top:18px;border-top:1px solid #D3D9E0;font-size:14px;line-height:1.5;color:#56606C}
 .sf-base a{color:#56606C;text-decoration:underline}
+.art{margin:32px 0 0;padding:16px;border:1px solid #D3D9E0;background:#FFFFFF}.art img{display:block;width:100%;max-width:860px;height:auto;margin:0 auto}
